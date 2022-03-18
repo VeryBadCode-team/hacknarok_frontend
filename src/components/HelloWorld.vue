@@ -1,17 +1,22 @@
 <template>
-  <div></div>
+  <div>
+    {{ users }}
+  </div>
 </template>
 
-<script>
-import { reactive } from "vue";
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
+import { useStore } from '../store';
 
-export default {
+export default defineComponent({
   setup() {
-    const state = reactive({
-      count: 0,
-    });
+    const store = useStore();
+  
+    const users = computed(() => store.users);
+
+    return { users };
   },
-};
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
