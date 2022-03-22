@@ -1,38 +1,13 @@
 <template>
-  <n-form ref="formRef" :model="model" :rules="rules" class="container">
+  <n-form :model="model" :rules="rules" class="container" ref="formRef">
     <n-h3>Login</n-h3>
-    <n-form-item path="firstName" label="First name">
-      <n-input
-        type="text"
-        placeholder=""
-        v-model:value="model.firstName"
-        @keydown.enter.prevent
-      />
-    </n-form-item>
-    <n-form-item path="lastName" label="Last name">
-      <n-input
-        type="text"
-        placeholder=""
-        v-model:value="model.lastName"
-        @keydown.enter.prevent
-      />
-    </n-form-item>
     <n-form-item path="email" label="Email">
       <n-input type="text" placeholder="" v-model:value="model.email" />
     </n-form-item>
     <n-form-item path="password" label="Password">
       <n-input type="password" placeholder="" v-model:value="model.password" />
     </n-form-item>
-    <n-form-item path="reenteredPassword" label="Re-enter password">
-      <n-input
-        ref="rPasswordFormItemRef"
-        first
-        type="password"
-        placeholder=""
-        v-model:value="model.reenteredPassword"
-      />
-    </n-form-item>
-    <n-button type="primary" @click="handleClick"> Send form </n-button>
+    <n-button type="primary" @click="handleClick"> Login </n-button>
   </n-form>
   <pre>
     {{ JSON.stringify(model, null, 2) }}
@@ -46,13 +21,14 @@ import {
   NH3,
   NForm,
   NFormItem,
-  FormInst,
-  FormItemInst,
   FormRules,
-  FormItemRule,
   NButton,
+  FormInst,
 } from 'naive-ui';
-import { ModelType } from '../types';
+import { LoginModelType } from '../types';
+import { validateEmail } from '../helpers';
+import { useStore } from '../store';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -64,38 +40,20 @@ export default defineComponent({
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
-    const rPasswordFormItemRef = ref<FormItemInst | null>(null);
+    const store = useStore();
+    const router = useRouter();
 
-    const model = ref<ModelType>({
-      firstName: null,
-      lastName: null,
+    const model = ref<LoginModelType>({
       email: null,
       password: null,
-      reenteredPassword: null,
     });
 
-    const validatePasswordSame = (rule: FormItemRule, value: string): boolean =>
-      value === model.value.password;
-
     const rules: FormRules = {
-      firstName: [
-        {
-          required: true,
-          message: 'Field is required',
-          trigger: 'blur',
-        },
-      ],
-      lastName: [
-        {
-          required: true,
-          message: 'Field is required',
-          trigger: 'blur',
-        },
-      ],
       email: [
         {
           required: true,
-          message: 'Field is required',
+          validator: validateEmail,
+          message: 'Invalid email address',
           trigger: 'blur',
         },
       ],
@@ -106,25 +64,25 @@ export default defineComponent({
           trigger: 'blur',
         },
       ],
-      reenteredPassword: [
-        {
-          required: true,
-          message: 'Field is required',
-          trigger: ['input', 'blur'],
-        },
-        {
-          validator: validatePasswordSame,
-          message: 'Password is not same as re-entered password!',
-          trigger: ['blur', 'password-input'],
-        },
-      ],
+    };
+
+    const handleClick = async (e: MouseEvent): Promise<void> => {
+      e.preventDefault();
+      formRef.value?.validate((errors) => {
+        if (errors) {
+          return;
+        }
+      });
+
+      await store.login(model.value);
+      router.push('/authenticated');
     };
 
     return {
       formRef,
-      rPasswordFormItemRef,
       model,
       rules,
+      handleClick,
     };
   },
 });
@@ -136,6 +94,6 @@ export default defineComponent({
   max-width: 500px;
   padding: 2rem;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 10rem auto;
 }
 </style>

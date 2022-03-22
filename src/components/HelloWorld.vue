@@ -1,12 +1,17 @@
 <template>
   <div class="wrapper">
     <n-config-provider :theme-overrides="themeOverrides">
-      <n-tabs default-value="login" size="large" justify-content="space-evenly">
+      <n-tabs default-value="table" size="large" justify-content="space-evenly">
         <n-tab-pane name="table" tab="Table">
           <v-table></v-table>
         </n-tab-pane>
-        <n-tab-pane name="login" tab="Auth">
-          <v-login></v-login>
+        <n-tab-pane name="auth" tab="Auth">
+          <v-sign-up></v-sign-up>
+        </n-tab-pane>
+        <n-tab-pane name="login" tab="Login">
+          <router-link to="/login">
+            <n-button type="primary"> User auth demo </n-button>
+          </router-link>
         </n-tab-pane>
       </n-tabs>
     </n-config-provider>
@@ -16,19 +21,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {
+  NButton,
   NTabs,
   NTabPane,
   NConfigProvider,
   GlobalThemeOverrides,
 } from 'naive-ui';
 import VTable from './VTable.vue';
+import VSignUp from './VSignUp.vue';
 import VLogin from './VLogin.vue';
 
 export default defineComponent({
   components: {
+    NButton,
     NConfigProvider,
-    VLogin,
+    VSignUp,
     VTable,
+    VLogin,
     NTabs,
     NTabPane,
   },

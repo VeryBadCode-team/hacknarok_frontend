@@ -27,7 +27,6 @@ export default defineComponent({
         gender: user.gender,
         email: user.email,
         age: user.dob.age,
-        picture: user.picture.thumbnail,
         location: user.location.city,
       })),
     );
@@ -71,12 +70,14 @@ export default defineComponent({
       ];
     };
 
+    const sendMail = (rowData) => {
+      console.log('send mail to ' + rowData.name);
+    };
+
     return {
       users,
       columns: createColumns({
-        sendMail(rowData) {
-          console.log('send mail to ' + rowData.name);
-        },
+        sendMail,
       }),
       pagination: {
         pageSize: 5,

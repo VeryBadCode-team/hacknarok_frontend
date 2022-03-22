@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { LoginModelType } from '../types';
 
 const config = {
   headers: {
@@ -10,6 +11,13 @@ const config = {
 class UserService {
   getUsers() {
     return axios.get('https://randomuser.me/api/?results=10', config);
+  }
+  login(payload: LoginModelType) {
+    return axios.post(
+      'https://hacknarok-api.verybadcode.pl/api/auth/login',
+      payload,
+      config,
+    );
   }
 }
 

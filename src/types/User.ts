@@ -54,7 +54,7 @@ interface Picture {
   thumbnail: string;
 }
 
-export interface User {
+export interface UserInTable {
   gender: string;
   name: Name;
   location: Location;
@@ -67,4 +67,29 @@ export interface User {
   id: Id;
   picture: Picture;
   nat: string;
+}
+
+export enum roles {
+  ROLE_USER = 'ROLE_USER',
+  ROLE_ADMIN = 'ROLE_ADMIN',
+}
+
+export interface userRoles {
+  id: number;
+  name: roles;
+  objectId: any;
+}
+
+export interface token {
+  token: string;
+  type: string;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  roles: roles;
+  token: token;
 }

@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <hello-world></hello-world>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
