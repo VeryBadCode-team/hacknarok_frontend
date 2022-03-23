@@ -9,3 +9,17 @@
 TODO global:
 - przechować usera w cache - localStorage (?)
 - jeśli tak to wczytać go w beforeMount w App.vue (?)
+
+2. SignUp
+- Nowy komponent (a)
+- Nową sciezka dla niego w router np. /signup
+- jakiś button który będzie owrapowany w <router-link>
+- (b) na podstawie VLogin stworzyć formularz 
+    - dodać firstName, lastName oraz nr telefonu który zwalidować tak zeby przyjmowal tylko 9 liczb (walidacje zrobić jako helper)
+    - dodać te pola ^ do model 
+    - LoginModelType - przerobić pod rejestrowanie 
+    - oraz to samo dla rules i FormRules 
+    - payload - przerobić
+- zrobić zapytanie w user.service 
+- uzyc go w actions w storze - nowa akcja 
+- ktora nastepnie wywolac w stworzonym komponencie 
