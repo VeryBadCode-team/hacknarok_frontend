@@ -7,6 +7,6 @@ export interface SignupModelType {
 }
 
 export interface LoginModelType {
-  email: string | null;
-  password: string | null;
+  email: string
+  password: string
 }

@@ -25,6 +25,7 @@ import {
   NButton,
   FormInst,
 } from 'naive-ui';
+import { SHA256, enc } from 'crypto-js';
 import { LoginModelType } from '../types';
 import { validateEmail } from '../helpers';
 import { useStore } from '../store';
@@ -44,8 +45,8 @@ export default defineComponent({
     const router = useRouter();
 
     const model = ref<LoginModelType>({
-      email: null,
-      password: null,
+      email: '',
+      password: '',
     });
 
     const rules: FormRules = {
@@ -74,7 +75,14 @@ export default defineComponent({
         }
       });
 
-      await store.login(model.value);
+      const hashedPassword = SHA256(model.value.password);
+
+      const payload: LoginModelType = {
+        email: model.value.email,
+        password: hashedPassword.toString(enc.Hex),
+      };
+
+      await store.login(payload);
       router.push('/authenticated');
     };
 
