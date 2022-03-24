@@ -5,8 +5,10 @@
         <n-tab-pane name="table" tab="Table">
           <v-table></v-table>
         </n-tab-pane>
-        <n-tab-pane name="auth" tab="Auth">
-          <v-sign-up></v-sign-up>
+        <n-tab-pane name="register" tab="Register">
+          <router-link to="/signup">
+            <n-button type="primary"> User auth demo </n-button>
+          </router-link>
         </n-tab-pane>
         <n-tab-pane name="login" tab="Login">
           <router-link to="/login">

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 import UserService from '../service/user.service';
-import { LoginModelType, User, UserInTable } from '../types';
+import { LoginModelType, SignUpModelType, User, UserInTable } from '../types';
 
 export const useStore = defineStore('main', {
   state: () => ({
@@ -20,6 +20,14 @@ export const useStore = defineStore('main', {
     async login(payload: LoginModelType): Promise<void> {
       try {
         const response = await UserService.login(payload);
+        this.user = response.data;
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    async register(payload: SignUpModelType): Promise<void> {
+      try {
+        const response = await UserService.register(payload);
         this.user = response.data;
       } catch (err) {
         console.error(err);

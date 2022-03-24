@@ -2,11 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useStore } from '../store';
 
 const HelloWorld = () => import('../components/HelloWorld.vue');
+const VSignUp = () => import('../components/VSignUp.vue');
 const VLogin = () => import('../components/VLogin.vue');
 const VSuccess = () => import('../components/VSuccess.vue');
 
 const routes = [
   { path: '/', component: HelloWorld, meta: { guest: true } },
+  { path: '/signup', component: VSignUp, meta: { guest: true } },
   { path: '/login', component: VLogin, meta: { guest: true } },
   { path: '/authenticated', component: VSuccess, meta: { requiresAuth: true } },
 ];
