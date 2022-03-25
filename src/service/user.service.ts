@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { LoginModelType } from '../types';
+import { SignUpModelType } from '../types';
 
 const config = {
   headers: {
@@ -15,6 +16,13 @@ class UserService {
   login(payload: LoginModelType) {
     return axios.post(
       'https://hacknarok-api.verybadcode.pl/api/auth/login',
+      payload,
+      config,
+    );
+  }
+  register(payload: SignUpModelType) {
+    return axios.post(
+      'https://hacknarok-api.verybadcode.pl/api/auth/register',
       payload,
       config,
     );

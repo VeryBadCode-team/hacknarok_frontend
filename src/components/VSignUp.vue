@@ -20,6 +20,9 @@
     <n-form-item path="email" label="Email">
       <n-input type="text" placeholder="" v-model:value="model.email" />
     </n-form-item>
+    <n-form-item path="phone" label="Phone">
+      <n-input type="number" placeholder="" v-model:value="model.phone" />
+    </n-form-item>
     <n-form-item path="password" label="Password">
       <n-input type="password" placeholder="" v-model:value="model.password" />
     </n-form-item>
@@ -41,6 +44,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { SHA256, enc } from 'crypto-js';
 import {
   NInput,
   NH3,
@@ -52,7 +56,10 @@ import {
   FormItemRule,
   NButton,
 } from 'naive-ui';
-import { SignupModelType } from '../types';
+import { SignUpModelType } from '../types';
+import { validatePhone } from '../helpers';
+import { useStore } from '../store';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -64,14 +71,17 @@ export default defineComponent({
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
+    const store = useStore();
+    const router = useRouter();
     const rPasswordFormItemRef = ref<FormItemInst | null>(null);
 
-    const model = ref<SignupModelType>({
+    const model = ref<SignUpModelType>({
       firstName: null,
       lastName: null,
       email: null,
-      password: null,
-      reenteredPassword: null,
+      phone: null,
+      password: '',
+      reenteredPassword: '',
     });
 
     const validatePasswordSame = (rule: FormItemRule, value: string): boolean =>
@@ -99,6 +109,18 @@ export default defineComponent({
           trigger: 'blur',
         },
       ],
+      phone: [
+        {
+          required: true,
+          message: 'Field is required',
+          trigger: 'blur',
+        },
+        {
+          validator: validatePhone,
+          message: 'Phone number must have only 9 digits!',
+          trigger: 'blur',
+        },
+      ],
       password: [
         {
           required: true,
@@ -120,11 +142,36 @@ export default defineComponent({
       ],
     };
 
+    const handleClick = async (e: MouseEvent): Promise<void> => {
+      e.preventDefault();
+      formRef.value?.validate((errors) => {
+        if (errors) {
+          return;
+        }
+      });
+
+      const hashedPassword = SHA256(model.value.password);
+      const hashedRePassword = SHA256(model.value.reenteredPassword);
+
+      const payload: SignUpModelType = {
+        firstName: model.value.firstName,
+        lastName: model.value.lastName,
+        email: model.value.email,
+        phone: model.value.phone,
+        password: hashedPassword.toString(enc.Hex),
+        reenteredPassword: hashedRePassword.toString(enc.Hex),
+      };
+
+      await store.register(payload);
+      router.push('/authenticated');
+    };
+
     return {
       formRef,
       rPasswordFormItemRef,
       model,
       rules,
+      handleClick,
     };
   },
 });
@@ -136,6 +183,6 @@ export default defineComponent({
   max-width: 500px;
   padding: 2rem;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 </style>
