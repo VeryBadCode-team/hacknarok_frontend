@@ -3,16 +3,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useStore } from './store';
+import { defineComponent, onBeforeMount } from 'vue';
+import { useAuth } from './store/auth';
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    store.getUsers();
+    const store = useAuth();
 
-    // get user from localStorage in onBeforeMount
-    // set this user in store
+    onBeforeMount(() => {
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        store.user = JSON.parse(currentUser);
+      }
+    });
     return {};
   },
 });
