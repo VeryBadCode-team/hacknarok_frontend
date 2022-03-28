@@ -142,7 +142,7 @@ export default defineComponent({
       ],
     };
 
-    const handleClick = async (e: MouseEvent): Promise<void> => {
+    const handleClick = (e: MouseEvent): void => {
       e.preventDefault();
       formRef.value?.validate((errors) => {
         if (errors) {
@@ -162,8 +162,7 @@ export default defineComponent({
         reenteredPassword: hashedRePassword.toString(enc.Hex),
       };
 
-      await store.register(payload);
-      router.push('/authenticated');
+      store.register(payload);
     };
 
     return {

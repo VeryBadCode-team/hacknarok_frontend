@@ -31,6 +31,7 @@ export const useStore = defineStore('main', {
       try {
         const response = await UserService.register(payload);
         this.user = response.data;
+        router.push('/authenticated');
       } catch (err) {
         console.error(err);
       }
