@@ -11,6 +11,8 @@ export default defineComponent({
     const store = useStore();
     store.getUsers();
 
+    // get user from localStorage in onBeforeMount
+    // set this user in store
     return {};
   },
 });

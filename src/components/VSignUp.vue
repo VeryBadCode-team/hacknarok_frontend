@@ -56,10 +56,9 @@ import {
   FormItemRule,
   NButton,
 } from 'naive-ui';
-import { SignUpModelType } from '../types';
+import { SignUpModel } from '../types';
 import { validatePhone } from '../helpers';
 import { useStore } from '../store';
-import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -72,19 +71,18 @@ export default defineComponent({
   setup() {
     const formRef = ref<FormInst | null>(null);
     const store = useStore();
-    const router = useRouter();
     const rPasswordFormItemRef = ref<FormItemInst | null>(null);
 
-    const model = ref<SignUpModelType>({
-      firstName: null,
-      lastName: null,
-      email: null,
-      phone: null,
+    const model = ref<SignUpModel>({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
       password: '',
       reenteredPassword: '',
     });
 
-    const validatePasswordSame = (rule: FormItemRule, value: string): boolean =>
+    const validatePasswordSame = (_: FormItemRule, value: string): boolean =>
       value === model.value.password;
 
     const rules: FormRules = {
@@ -153,7 +151,7 @@ export default defineComponent({
       const hashedPassword = SHA256(model.value.password);
       const hashedRePassword = SHA256(model.value.reenteredPassword);
 
-      const payload: SignUpModelType = {
+      const payload: SignUpModel = {
         firstName: model.value.firstName,
         lastName: model.value.lastName,
         email: model.value.email,

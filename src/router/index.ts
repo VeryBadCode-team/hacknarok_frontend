@@ -11,6 +11,7 @@ const routes = [
   { path: '/signup', component: VSignUp, meta: { guest: true } },
   { path: '/login', component: VLogin, meta: { guest: true } },
   { path: '/authenticated', component: VSuccess, meta: { requiresAuth: true } },
+  { path: '/:notFound(.*)', redirect: '/', meta: { guest: true } },
 ];
 
 const router = createRouter({
@@ -19,10 +20,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  const store = useStore()
-  
+  const store = useStore();
+
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (store.user.token.type) {
+    if (store.user && store.user?.token?.type) {
       next();
       return;
     }

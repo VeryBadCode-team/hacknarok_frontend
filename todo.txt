@@ -1,14 +1,18 @@
-1. Mini task - usuwanie wiersza z tabelki
-- sworzyć funkcję delete w VTable - mozna przerobić sendMail
-- stworzyć akcję w storze której przekazane zostanie np. name 
-- rozbić name na first name oraz last name i znalezć usera o takich danych
-- oraz go usunąć z tablicy
-- sprawdzić czy usunięcię nastąpiło 'live' jeśli tak do dlaczego
-
-
 TODO global:
+- clean up
 - przechować usera w cache - localStorage (?)
 - jeśli tak to wczytać go w beforeMount w App.vue (?)
+- logout 
+- development rules
+- different pinia stores like useUsers, useProducts
+- global project styles
+- figma views for login and sign in 
+
+
+
+
+
+
 
 2. SignUp (DONE)
 - Nowy komponent (a)

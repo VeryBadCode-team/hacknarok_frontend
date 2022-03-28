@@ -1,10 +1,7 @@
 <template>
   <div class="wrapper">
     <n-config-provider :theme-overrides="themeOverrides">
-      <n-tabs default-value="table" size="large" justify-content="space-evenly">
-        <n-tab-pane name="table" tab="Table">
-          <v-table></v-table>
-        </n-tab-pane>
+      <n-tabs default-value="register" size="large" justify-content="space-evenly">
         <n-tab-pane name="register" tab="Register">
           <router-link to="/signup">
             <n-button type="primary"> User auth demo </n-button>
@@ -29,7 +26,6 @@ import {
   NConfigProvider,
   GlobalThemeOverrides,
 } from 'naive-ui';
-import VTable from './VTable.vue';
 import VSignUp from './VSignUp.vue';
 import VLogin from './VLogin.vue';
 
@@ -38,7 +34,6 @@ export default defineComponent({
     NButton,
     NConfigProvider,
     VSignUp,
-    VTable,
     VLogin,
     NTabs,
     NTabPane,

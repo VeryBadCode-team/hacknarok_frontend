@@ -1,13 +1,13 @@
-export interface SignUpModelType {
-  firstName: string | null;
-  lastName: string | null;
-  email: string | null;
-  phone: string | null;
+export interface SignUpModel {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
   password: string;
   reenteredPassword: string;
 }
 
-export interface LoginModelType {
+export interface LoginModel {
   email: string;
   password: string;
 }

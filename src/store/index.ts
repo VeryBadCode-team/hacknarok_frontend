@@ -1,8 +1,16 @@
+import { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 import router from '../router';
 
-import UserService from '../service/user.service';
-import { LoginModelType, SignUpModelType, User, UserInTable } from '../types';
+import AuthService from '../service/auth.service';
+import {
+  LoginModel,
+  LoginResponse,
+  RegisterResponse,
+  SignUpModel,
+  User,
+  UserInTable,
+} from '../types';
 
 export const useStore = defineStore('main', {
   state: () => ({
@@ -10,28 +18,27 @@ export const useStore = defineStore('main', {
     user: {} as User,
   }),
   actions: {
-    async getUsers(): Promise<void> {
+    async login(payload: LoginModel): Promise<void> {
       try {
-        const response = await UserService.getUsers();
-        this.users = response.data.results;
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    async login(payload: LoginModelType): Promise<void> {
-      try {
-        const response = await UserService.login(payload);
+        const response: AxiosResponse<LoginResponse, any> = await AuthService.login(payload);
         this.user = response.data;
+        // Save in local storage
         router.push('/authenticated');
       } catch (err) {
         console.error(err);
       }
     },
-    async register(payload: SignUpModelType): Promise<void> {
+    async register(payload: SignUpModel): Promise<void> {
       try {
-        const response = await UserService.register(payload);
-        this.user = response.data;
-        router.push('/authenticated');
+        const response: AxiosResponse<RegisterResponse, any> =
+          await AuthService.register(payload);
+        if (response.data.id) {
+          const newPayload: LoginModel = {
+            email: payload.email,
+            password: payload.password,
+          };
+          this.login(newPayload);
+        }
       } catch (err) {
         console.error(err);
       }

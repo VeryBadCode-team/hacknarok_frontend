@@ -26,10 +26,9 @@ import {
   FormInst,
 } from 'naive-ui';
 import { SHA256, enc } from 'crypto-js';
-import { LoginModelType } from '../types';
+import { LoginModel } from '../types';
 import { validateEmail } from '../helpers';
 import { useStore } from '../store';
-import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -42,9 +41,8 @@ export default defineComponent({
   setup() {
     const formRef = ref<FormInst | null>(null);
     const store = useStore();
-    const router = useRouter();
 
-    const model = ref<LoginModelType>({
+    const model = ref<LoginModel>({
       email: '',
       password: '',
     });
@@ -77,7 +75,7 @@ export default defineComponent({
 
       const hashedPassword = SHA256(model.value.password);
 
-      const payload: LoginModelType = {
+      const payload: LoginModel = {
         email: model.value.email,
         password: hashedPassword.toString(enc.Hex),
       };
