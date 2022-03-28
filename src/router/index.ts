@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useStore } from '../store';
+import { useAuth } from '../store/auth';
 
 const HelloWorld = () => import('../components/HelloWorld.vue');
 const VSignUp = () => import('../components/VSignUp.vue');
@@ -20,7 +20,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  const store = useStore();
+  const store = useAuth();
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.user && store.user?.token?.type) {

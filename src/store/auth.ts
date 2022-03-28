@@ -9,12 +9,10 @@ import {
   RegisterResponse,
   SignUpModel,
   User,
-  UserInTable,
 } from '../types';
 
-export const useStore = defineStore('main', {
+export const useAuth = defineStore('auth', {
   state: () => ({
-    users: [] as UserInTable[],
     user: {} as User,
   }),
   actions: {
@@ -22,7 +20,7 @@ export const useStore = defineStore('main', {
       try {
         const response: AxiosResponse<LoginResponse, any> = await AuthService.login(payload);
         this.user = response.data;
-        // Save in local storage
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         router.push('/authenticated');
       } catch (err) {
         console.error(err);
@@ -42,6 +40,11 @@ export const useStore = defineStore('main', {
       } catch (err) {
         console.error(err);
       }
+    },
+    logout(): void {
+      this.user = {} as User,
+      router.push('/');
+      localStorage.removeItem('currentUser');
     },
   },
 });

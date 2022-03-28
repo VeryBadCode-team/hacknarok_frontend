@@ -58,7 +58,7 @@ import {
 } from 'naive-ui';
 import { SignUpModel } from '../types';
 import { validatePhone } from '../helpers';
-import { useStore } from '../store';
+import { useAuth } from '../store/auth';
 
 export default defineComponent({
   components: {
@@ -70,7 +70,7 @@ export default defineComponent({
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
-    const store = useStore();
+    const store = useAuth();
     const rPasswordFormItemRef = ref<FormItemInst | null>(null);
 
     const model = ref<SignUpModel>({

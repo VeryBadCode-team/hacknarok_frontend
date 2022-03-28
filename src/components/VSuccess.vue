@@ -1,19 +1,43 @@
 <template>
-  <h1>{{ `${user.email}: ${user.firstName} ${user.lastName}` }}</h1>
-  <p>this is only visible for authenticated users</p>
+  <div class="auth">
+    <n-h1>{{ `${user.email}: ${user.firstName} ${user.lastName}` }}</n-h1>
+    <n-p>This is only visible for authenticated users</n-p>
+    <n-button type="primary" @click="handleLogout"> Logout </n-button>
+  </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useStore } from '../store';
+import { defineComponent } from 'vue';
+import { NButton, NP, NH1 } from 'naive-ui';
+import { useAuth } from '../store/auth';
+import { storeToRefs } from 'pinia';
 
 export default defineComponent({
+  components: {
+    NButton,
+    NP,
+    NH1,
+  },
   setup() {
-    const store = useStore();
+    const store = useAuth();
 
-    const user = computed(() => store.user);
+    const { user } = storeToRefs(store);
 
-    return { user };
+    const handleLogout = () => {
+      store.logout();
+    };
+
+    return { user, handleLogout };
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.auth {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+</style>

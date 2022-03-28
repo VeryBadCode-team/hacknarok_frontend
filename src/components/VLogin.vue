@@ -28,7 +28,7 @@ import {
 import { SHA256, enc } from 'crypto-js';
 import { LoginModel } from '../types';
 import { validateEmail } from '../helpers';
-import { useStore } from '../store';
+import { useAuth } from '../store/auth';
 
 export default defineComponent({
   components: {
@@ -40,7 +40,7 @@ export default defineComponent({
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
-    const store = useStore();
+    const store = useAuth();
 
     const model = ref<LoginModel>({
       email: '',

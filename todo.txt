@@ -1,14 +1,7 @@
 TODO global:
-- clean up
-- przechować usera w cache - localStorage (?)
-- jeśli tak to wczytać go w beforeMount w App.vue (?)
-- logout 
 - development rules
-- different pinia stores like useUsers, useProducts
 - global project styles
 - figma views for login and sign in 
-
-
 
 
 
