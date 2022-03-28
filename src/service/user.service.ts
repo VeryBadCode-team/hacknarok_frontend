@@ -1,31 +1,22 @@
 import axios from 'axios';
+import instance from './axios-config';
 import { LoginModelType } from '../types';
 import { SignUpModelType } from '../types';
 
-const config = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
-  },
-};
-
 class UserService {
+  // TODO: delete getUsers() in real project and then remove import
   getUsers() {
-    return axios.get('https://randomuser.me/api/?results=10', config);
+    return axios.get('https://randomuser.me/api/?results=10');
   }
   login(payload: LoginModelType) {
-    return axios.post(
-      'https://hacknarok-api.verybadcode.pl/api/auth/login',
-      payload,
-      config,
-    );
+    return instance.post('api/auth/login', payload);
   }
   register(payload: SignUpModelType) {
-    return axios.post(
-      'https://hacknarok-api.verybadcode.pl/api/auth/register',
-      payload,
-      config,
-    );
+    return instance.post('api/auth/register', payload);
+  }
+  // Example querry with param:
+  getUser(id: string | number) {
+    return instance.get('api/auth/user?id=' + id);
   }
 }
 
