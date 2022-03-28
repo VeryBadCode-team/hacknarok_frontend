@@ -67,7 +67,7 @@ export default defineComponent({
       ],
     };
 
-    const handleClick = async (e: MouseEvent): Promise<void> => {
+    const handleClick = (e: MouseEvent): void => {
       e.preventDefault();
       formRef.value?.validate((errors) => {
         if (errors) {
@@ -82,8 +82,7 @@ export default defineComponent({
         password: hashedPassword.toString(enc.Hex),
       };
 
-      await store.login(payload);
-      router.push('/authenticated');
+      store.login(payload);
     };
 
     return {

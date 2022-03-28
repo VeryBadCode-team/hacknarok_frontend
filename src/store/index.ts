@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import router from '../router';
 
 import UserService from '../service/user.service';
 import { LoginModelType, SignUpModelType, User, UserInTable } from '../types';
@@ -21,6 +22,7 @@ export const useStore = defineStore('main', {
       try {
         const response = await UserService.login(payload);
         this.user = response.data;
+        router.push('/authenticated');
       } catch (err) {
         console.error(err);
       }
