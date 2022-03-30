@@ -56,9 +56,9 @@ import {
   FormItemRule,
   NButton,
 } from 'naive-ui';
-import { SignUpModel } from '../types';
-import { validatePhone } from '../helpers';
-import { useAuth } from '../store/auth';
+import { SignUpModel } from '@/types';
+import { validatePhone } from '@/helpers';
+import { useAuth } from '@/store/auth';
 
 export default defineComponent({
   components: {

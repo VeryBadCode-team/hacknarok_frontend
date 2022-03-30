@@ -1,15 +1,15 @@
 import { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
-import router from '../router';
+import router from '@/router';
 
-import AuthService from '../service/auth.service';
+import AuthService from '@/service/auth.service';
 import {
   LoginModel,
   LoginResponse,
   RegisterResponse,
   SignUpModel,
   User,
-} from '../types';
+} from '@/types';
 
 export const useAuth = defineStore('auth', {
   state: () => ({
