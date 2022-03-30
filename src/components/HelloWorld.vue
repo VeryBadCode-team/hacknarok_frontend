@@ -26,15 +26,11 @@ import {
   NConfigProvider,
   GlobalThemeOverrides,
 } from 'naive-ui';
-import VSignUp from './VSignUp.vue';
-import VLogin from './VLogin.vue';
 
 export default defineComponent({
   components: {
     NButton,
     NConfigProvider,
-    VSignUp,
-    VLogin,
     NTabs,
     NTabPane,
   },

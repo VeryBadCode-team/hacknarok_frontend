@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeMount } from 'vue';
-import { useAuth } from './store/auth';
+import { useAuth } from '@/store/auth';
 
 export default defineComponent({
   setup() {

@@ -1,7 +1,7 @@
 import instance from './axios-config';
 
-import { LoginModel } from '../types';
-import { SignUpModel } from '../types';
+import { LoginModel } from '@/types';
+import { SignUpModel } from '@/types';
 
 class AuthService {
   login(payload: LoginModel) {

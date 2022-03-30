@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { NButton, NP, NH1 } from 'naive-ui';
-import { useAuth } from '../store/auth';
+import { useAuth } from '@/store/auth';
 import { storeToRefs } from 'pinia';
 
 export default defineComponent({

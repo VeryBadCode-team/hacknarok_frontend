@@ -26,9 +26,9 @@ import {
   FormInst,
 } from 'naive-ui';
 import { SHA256, enc } from 'crypto-js';
-import { LoginModel } from '../types';
-import { validateEmail } from '../helpers';
-import { useAuth } from '../store/auth';
+import { LoginModel } from '@/types';
+import { validateEmail } from '@/helpers';
+import { useAuth } from '@/store/auth';
 
 export default defineComponent({
   components: {
@@ -93,12 +93,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.container {
-  border: 1px solid rgb(228, 228, 228);
-  max-width: 500px;
-  padding: 2rem;
-  border-radius: 10px;
-  margin: 10rem auto;
-}
-</style>
+<style lang="scss" src="./SignIn.scss" />
