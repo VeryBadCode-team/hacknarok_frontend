@@ -1,10 +1,8 @@
 TODO global:
-- development rules
 - global project styles
-- figma views for login and sign in 
-
-
-
+- fix register when password and rest data isn't provided 
+- toast helper 
+- toast more material like styles
 
 
 2. SignUp (DONE)

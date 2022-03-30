@@ -1,14 +1,27 @@
 <template>
-  <router-view></router-view>
+  <n-config-provider :theme-overrides="theme">
+    <router-view></router-view>
+  </n-config-provider>
 </template>
 
 <script lang="ts">
 import { defineComponent, onBeforeMount } from 'vue';
 import { useAuth } from '@/store/auth';
+import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui';
 
 export default defineComponent({
+  components: {
+    NConfigProvider,
+  },
   setup() {
     const store = useAuth();
+
+    const theme: GlobalThemeOverrides = {
+      common: {
+        primaryColor: '#ef476f',
+        primaryColorHover: '#e2355e'
+      },
+    };
 
     onBeforeMount(() => {
       const currentUser = localStorage.getItem('currentUser');
@@ -16,7 +29,7 @@ export default defineComponent({
         store.user = JSON.parse(currentUser);
       }
     });
-    return {};
+    return { theme };
   },
 });
 </script>
@@ -28,20 +41,20 @@ export default defineComponent({
   // COLORS
   --color-primary: #ef476f;
   --color-primary-dark: #e2355e;
-  --color-light: #FFFFFF;
-  --color-dark: #18181B;
+  --color-light: #ffffff;
+  --color-dark: #18181b;
   --color-gray-dark: #868686;
-  --color-gray-light: #E7E7E7;
+  --color-gray-light: #e7e7e7;
 
   // SPACING
   --base-size: 0.8rem;
-  
+
   // FONTS
-  --primary-header: 600 5.6rem 'Lato', sans-serif;;
-  --secondary-header: 400 3.2rem 'Lato', sans-serif;;
-  --tertiary-header: 700 2rem 'Lato', sans-serif;;
-  --base-font: 300 1.6rem/150% 'Lato', sans-serif;;
-  --base-font-bold: 600 1.6rem 'Lato', sans-serif;;
+  --primary-header: 600 5.6rem 'Lato', sans-serif;
+  --secondary-header: 400 3.2rem 'Lato', sans-serif;
+  --tertiary-header: 700 2rem 'Lato', sans-serif;
+  --base-font: 300 1.6rem/150% 'Lato', sans-serif;
+  --base-font-bold: 600 1.6rem 'Lato', sans-serif;
 }
 
 *,
@@ -53,8 +66,14 @@ export default defineComponent({
 }
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 // Global styles
+
+.n-p, 
+.n-h1 {
+  margin: 0;
+}
 
 </style>
