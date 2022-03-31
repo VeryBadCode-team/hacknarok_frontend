@@ -7,7 +7,7 @@ import {
   LoginModel,
   LoginResponse,
   RegisterResponse,
-  SignUpModel,
+  SignUpModelPayload,
   User,
 } from '@/types';
 
@@ -26,7 +26,7 @@ export const useAuth = defineStore('auth', {
         console.error(err);
       }
     },
-    async register(payload: SignUpModel): Promise<void> {
+    async register(payload: SignUpModelPayload): Promise<void> {
       try {
         const response: AxiosResponse<RegisterResponse, any> =
           await AuthService.register(payload);

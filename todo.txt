@@ -1,8 +1,17 @@
 TODO global:
-- global project styles
-- fix register when password and rest data isn't provided 
+- create full name validator for signup 
+- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
 - toast helper 
 - toast more material like styles
+- add animations for signin and signup views
+
+
+DONE : 
+- fix register when password and rest data isn't provided 
+- move First Name and Last Name to Name then slice it in order to send data to backend as firstName and lastName and refactor models
+- create helper which will take name and then return object as first and last name then update payload in signup
+- create signup and signin views
+- refactor router and views
 
 
 2. SignUp (DONE)

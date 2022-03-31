@@ -35,7 +35,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
 :root {
   // COLORS
@@ -48,13 +47,6 @@ export default defineComponent({
 
   // SPACING
   --base-size: 0.8rem;
-
-  // FONTS
-  --primary-header: 600 5.6rem 'Lato', sans-serif;
-  --secondary-header: 400 3.2rem 'Lato', sans-serif;
-  --tertiary-header: 700 2rem 'Lato', sans-serif;
-  --base-font: 300 1.6rem/150% 'Lato', sans-serif;
-  --base-font-bold: 600 1.6rem 'Lato', sans-serif;
 }
 
 *,
@@ -72,8 +64,14 @@ html {
 // Global styles
 
 .n-p, 
-.n-h1 {
+.n-h1,
+.n-button {
   margin: 0;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
 </style>

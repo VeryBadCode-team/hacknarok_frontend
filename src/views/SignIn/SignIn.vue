@@ -1,47 +1,38 @@
 <template>
-<!-- remove class xd and header if unused - if used create Header component and use here -->
-  <div class="xd">
-    <div class="header">
-        <img src="../../assets/logo.svg" alt="xd">
-      <nav>
-        <n-p>Home</n-p>
-        <n-p>Projects</n-p>
-        <n-p>Career</n-p>
-        <n-p>About</n-p>
-        <n-p>Contact</n-p>
-        <n-p class="test">Sign In</n-p>
-      </nav>
-    </div>
-    <div class="sign-in container">
-      <n-form :model="model" :rules="rules" ref="formRef" class="sign-in__form">
-        <n-h1>Sign in to Hejka</n-h1>
-        <n-form-item path="email" label="Email">
-          <n-input type="text" placeholder="" v-model:value="model.email" />
-        </n-form-item>
-        <n-form-item path="password" label="Password">
-          <n-input
-            type="password"
-            placeholder=""
-            v-model:value="model.password"
-          />
-        </n-form-item>
-        <div class="sign-in__more">
-          <n-checkbox>Remember Me</n-checkbox>
-          <n-p>Forgot Password?</n-p>
-        </div>
-        <n-button type="primary" @click="handleClick"> Sign In </n-button>
-      </n-form>
-      <div class="sign-in__footer">
-        <n-p>Terms of Service</n-p>
-        <n-p>Contact Support</n-p>
-        <n-p>&copy; Hejka 2022</n-p>
+  <div class="sign-in">
+    <n-form :model="model" :rules="rules" ref="formRef" class="sign-in__form">
+      <n-h1>Sign in to Hejka</n-h1>
+      <n-form-item path="email" label="Email">
+        <n-input type="text" placeholder="" v-model:value="model.email" />
+      </n-form-item>
+      <n-form-item path="password" label="Password">
+        <n-input
+          type="password"
+          placeholder=""
+          v-model:value="model.password"
+        />
+      </n-form-item>
+      <div class="sign-in__more">
+        <n-checkbox>Remember Me</n-checkbox>
+        <n-p>Forgot Password?</n-p>
       </div>
+      <div class="sign-in__buttons">
+        <n-button type="primary" @click="handleSignIn"> Sign In </n-button>
+        <router-link to="/signup">
+          <n-button type="primary" ghost> Create Account </n-button>
+        </router-link>
+      </div>
+    </n-form>
+    <div class="sign-in__footer">
+      <n-p>Terms of Service</n-p>
+      <n-p>Contact Support</n-p>
+      <n-p>&copy; Hejka 2022</n-p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, onBeforeMount, ref } from 'vue';
 import {
   NInput,
   NH1,
@@ -57,6 +48,7 @@ import { SHA256, enc } from 'crypto-js';
 import { LoginModel } from '@/types';
 import { validateEmail } from '@/helpers';
 import { useAuth } from '@/store/auth';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -71,6 +63,11 @@ export default defineComponent({
   setup() {
     const formRef = ref<FormInst | null>(null);
     const store = useAuth();
+    const route = useRoute();
+
+    onBeforeMount(() => {
+      console.log(route.path);
+    });
 
     const model = ref<LoginModel>({
       email: '',
@@ -95,9 +92,9 @@ export default defineComponent({
       ],
     };
 
-    const handleClick = (e: MouseEvent): void => {
+    const handleSignIn = async (e: MouseEvent): Promise<void> => {
       e.preventDefault();
-      formRef.value?.validate((errors) => {
+      await formRef.value?.validate((errors) => {
         if (errors) {
           return;
         }
@@ -117,7 +114,7 @@ export default defineComponent({
       formRef,
       model,
       rules,
-      handleClick,
+      handleSignIn,
     };
   },
 });
