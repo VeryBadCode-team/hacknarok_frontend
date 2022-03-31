@@ -28,7 +28,13 @@
       position: absolute;
       top: -80%;
       right: 0;
-      cursor: pointer;
+    }
+  }
+
+  &__tooltip {
+    box-shadow: var(--shadow-light);
+    ul {
+      padding: 1rem 2rem;
     }
   }
 
