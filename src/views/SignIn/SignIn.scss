@@ -12,9 +12,8 @@
 
     .n-p {
       font-size: 1.3rem;
-      color: #18181b;
+
       cursor: pointer;
-      font-size: 1.3rem;
     }
   }
 
@@ -24,7 +23,7 @@
     align-items: center;
 
     .n-p {
-      color: #ef476f;
+      color: var(--color-primary);
     }
   }
 
@@ -47,16 +46,16 @@
     .n-p {
       font-size: 1.4rem;
       display: flex;
-      align-items: center;
       justify-content: center;
+      gap: 0.8rem;
 
       a {
         text-decoration: none;
-        color: #ef476f;
+        color: var(--color-primary);
       }
 
       a:hover {
-        color: #e2355e;
+        color: var(--color-primary-dark);
       }
     }
   }

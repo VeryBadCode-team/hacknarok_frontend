@@ -35,8 +35,8 @@
           Create Account
         </n-button>
         <n-p
-          >Already have an account? &nbsp;
-          <router-link class="" to="/login">Sign In</router-link></n-p
+          ><span> Already have an account? </span>
+          <router-link to="/login">Sign In</router-link></n-p
         >
       </div>
     </n-form>

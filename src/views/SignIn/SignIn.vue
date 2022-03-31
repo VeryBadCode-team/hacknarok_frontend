@@ -18,9 +18,9 @@
       </div>
       <div class="sign-in__buttons">
         <n-button type="primary" @click="handleSignIn"> Sign In </n-button>
-        <n-p
-          >Don't have an account? &nbsp;
-          <router-link class="" to="/signup">Sign Up</router-link></n-p
+        <n-p>
+          <span> Don't have an account? </span>
+          <router-link to="/signup">Sign Up</router-link></n-p
         >
       </div>
     </n-form>
