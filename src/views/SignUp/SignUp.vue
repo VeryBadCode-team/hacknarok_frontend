@@ -145,7 +145,7 @@ export default defineComponent({
       rPasswordFormItemRef,
       model,
       rules,
-        handleCreateAccount,
+      handleCreateAccount,
     };
   },
 });
