@@ -1,6 +1,6 @@
 const HomeView = () => import('@/views/Home/HomeView.vue');
 const SignIn = () => import('@/views/SignIn/SignIn.vue');
-const SignUp = () => import('@/views/signup/signup.vue');
+const SignUp = () => import('@/views/SignUp/SignUp.vue');
 const VSuccess = () => import('@/components/VSuccess.vue');
 
 const routes = [

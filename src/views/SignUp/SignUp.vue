@@ -4,29 +4,29 @@
       <n-h1>Welcome</n-h1>
       <n-form-item path="name" label="Full Name">
         <n-input
-          type="text"
-          placeholder=""
-          v-model:value="model.name"
-          @keydown.enter.prevent
+            type="text"
+            placeholder=""
+            v-model:value="model.name"
+            @keydown.enter.prevent
         />
       </n-form-item>
       <n-form-item path="email" label="Email">
-        <n-input type="text" placeholder="" v-model:value="model.email" />
+        <n-input type="text" placeholder="" v-model:value="model.email"/>
       </n-form-item>
       <n-form-item path="phone" label="Phone (removed?)">
-        <n-input type="text" placeholder="" v-model:value="model.phone" />
+        <n-input type="text" placeholder="" v-model:value="model.phone"/>
       </n-form-item>
       <div class="sign-up__password-container">
         <n-form-item path="password" label="Password" class="sign-up__password">
           <n-input
-            type="password"
-            placeholder=""
-            v-model:value="model.password"
+              type="password"
+              placeholder=""
+              v-model:value="model.password"
           />
           <n-popover
-            trigger="hover"
-            placement="right"
-            class="sign-up__tooltip"
+              trigger="hover"
+              placement="right"
+              class="sign-up__tooltip"
           >
             <template #trigger>
               <icon size="20">
@@ -43,7 +43,7 @@
             </ul>
           </n-popover>
         </n-form-item>
-        <password-meter :password="model.password" @score="handleScore" />
+        <password-meter :password="model.password" @score="handleScore"/>
       </div>
 
       <div class="sign-up__buttons">
@@ -51,8 +51,9 @@
           Create Account
         </n-button>
         <n-p
-          ><span> Already have an account? </span>
-          <router-link to="/login">Sign In</router-link></n-p
+        ><span> Already have an account? </span>
+          <router-link to="/login">Sign In</router-link>
+        </n-p
         >
       </div>
     </n-form>
@@ -65,31 +66,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { SHA256, enc } from 'crypto-js';
+import {defineComponent, ref} from 'vue';
+import {enc, SHA256} from 'crypto-js';
 import PasswordMeter from 'vue-simple-password-meter';
-import {
-  NInput,
-  NH1,
-  NP,
-  NForm,
-  NFormItem,
-  FormInst,
-  FormItemInst,
-  FormRules,
-  NButton,
-  NPopover,
-} from 'naive-ui';
-import { Information } from '@vicons/carbon';
-import { Icon } from '@vicons/utils';
-import { SignUpModel, SignUpModelPayload } from '@/types';
-import {
-  validatePhone,
-  splitFullName,
-  validateEmail,
-  validateFullName,
-} from '@/helpers';
-import { useAuth } from '@/store/auth';
+import {FormInst, FormItemInst, FormRules, NButton, NForm, NFormItem, NH1, NInput, NP, NPopover,} from 'naive-ui';
+import {Information} from '@vicons/carbon';
+import {Icon} from '@vicons/utils';
+import {SignUpModel, SignUpModelPayload} from '@/types';
+import {splitFullName, validateEmail, validateFullName,} from '@/helpers';
+import {useAuth} from '@/store/auth';
 
 export default defineComponent({
   components: {
@@ -117,7 +102,7 @@ export default defineComponent({
       password: '',
     });
 
-    const handleScore = ({ score }) => (passwordScore.value = score);
+    const handleScore = ({score}: { score: any }) => (passwordScore.value = score);
 
     const rules: FormRules = {
       name: [
@@ -162,8 +147,8 @@ export default defineComponent({
 
       const hashedPassword = SHA256(model.value.password);
 
-      const { firstName, lastName } = splitFullName(
-        model.value.name.trim().split(' '),
+      const {firstName, lastName} = splitFullName(
+          model.value.name.trim().split(' '),
       );
 
       const payload: SignUpModelPayload = {
@@ -189,4 +174,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./SignUp.scss" />
+<style lang="scss" src="./SignUp.scss"/>
