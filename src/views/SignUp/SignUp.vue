@@ -16,14 +16,20 @@
       <n-form-item path="phone" label="Phone (removed?)">
         <n-input type="text" placeholder="" v-model:value="model.phone" />
       </n-form-item>
-      <n-form-item path="password" label="Password" class="sign-up__password">
-        <n-input
-          type="password"
-          placeholder=""
-          v-model:value="model.password"
-        />
-        <password-meter :password="model.password" />
-      </n-form-item>
+      <div class="sign-up__password-container">
+        <n-form-item path="password" label="Password" class="sign-up__password">
+          <n-input
+            type="password"
+            placeholder=""
+            v-model:value="model.password"
+          />
+          <icon size="20">
+            <information></information>
+          </icon>
+        </n-form-item>
+        <password-meter :password="model.password" @score="handleScore" />
+      </div>
+
       <n-button type="primary" @click="handleCreateAccount">
         Create Account
       </n-button>
@@ -51,13 +57,14 @@ import {
   FormRules,
   NButton,
 } from 'naive-ui';
+import { Information } from '@vicons/carbon';
+import { Icon } from '@vicons/utils';
 import { SignUpModel, SignUpModelPayload } from '@/types';
 import {
   validatePhone,
   splitFullName,
   validateEmail,
   validateFullName,
-  validatePassword,
 } from '@/helpers';
 import { useAuth } from '@/store/auth';
 
@@ -70,11 +77,14 @@ export default defineComponent({
     NP,
     NInput,
     PasswordMeter,
+    Information,
+    Icon,
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
     const store = useAuth();
     const rPasswordFormItemRef = ref<FormItemInst | null>(null);
+    const passwordScore = ref(0);
 
     const model = ref<SignUpModel>({
       name: '',
@@ -82,6 +92,8 @@ export default defineComponent({
       phone: '',
       password: '',
     });
+
+    const handleScore = ({ score }) => (passwordScore.value = score);
 
     const rules: FormRules = {
       name: [
@@ -108,11 +120,12 @@ export default defineComponent({
           trigger: 'blur',
         },
       ],
-      // password: [
-      //   {
-      //     validator: validatePassword,
-      //   },
-      // ],
+      password: [
+        {
+          validator: () => passwordScore.value === 4,
+          trigger: 'blur',
+        },
+      ],
     };
 
     const handleCreateAccount = async (e: MouseEvent): Promise<void> => {
@@ -146,6 +159,7 @@ export default defineComponent({
       model,
       rules,
       handleCreateAccount,
+      handleScore,
     };
   },
 });
