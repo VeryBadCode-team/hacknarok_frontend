@@ -50,7 +50,7 @@ export const useAuth = defineStore('auth', {
     },
     async changeEmail(payload: UpdateUserPayload): Promise<void> {
       try {
-        await AuthService.changeEmail(payload, this.user.token.type);
+        await AuthService.changeEmail(payload);
         toastNotification(ToastType.SUCCESS, 'Email changed succesfully.');
       } catch (err) {
         toastNotification(ToastType.ERROR, 'Email cannot be changed');
@@ -58,7 +58,7 @@ export const useAuth = defineStore('auth', {
     },
     async changePassword(payload: UpdateUserPayload): Promise<void> {
       try {
-        await AuthService.changePassword(payload, this.user.token.type);
+        await AuthService.changePassword(payload);
         toastNotification(ToastType.SUCCESS, 'Password changed succesfully.');
       } catch (err) {
         toastNotification(ToastType.ERROR, 'Password cannot be changed');
