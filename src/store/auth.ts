@@ -11,6 +11,8 @@ import {
   UpdateUserPayload,
   User,
 } from '@/types';
+import { ToastType } from '@/types';
+import { toastNotification } from '@/helpers';
 
 export const useAuth = defineStore('auth', {
   state: () => ({
@@ -25,8 +27,10 @@ export const useAuth = defineStore('auth', {
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         router.push('/authenticated');
       } catch (err) {
-        // TODO - toast here
-        // msg: Invalid credentials. Please try again.
+        toastNotification(
+          ToastType.ERROR,
+          'Invalid credentials. Please try again.',
+        );
       }
     },
     async register(payload: SignUpModelPayload): Promise<void> {
@@ -41,23 +45,23 @@ export const useAuth = defineStore('auth', {
           this.login(newPayload);
         }
       } catch (err) {
-        // TODO - toast here
+        toastNotification(ToastType.ERROR, 'Something is wrong');
       }
     },
     async changeEmail(payload: UpdateUserPayload): Promise<void> {
       try {
         await AuthService.changeEmail(payload, this.user.token.type);
-        // TODO - toast here
+        toastNotification(ToastType.SUCCESS, 'Email changed succesfully.');
       } catch (err) {
-        // TODO - toast here
+        toastNotification(ToastType.ERROR, 'Email cannot be changed');
       }
     },
     async changePassword(payload: UpdateUserPayload): Promise<void> {
       try {
         await AuthService.changePassword(payload, this.user.token.type);
-        // TODO - toast here
+        toastNotification(ToastType.SUCCESS, 'Password changed succesfully.');
       } catch (err) {
-        // TODO - toast here
+        toastNotification(ToastType.ERROR, 'Password cannot be changed');
       }
     },
     logout(): void {

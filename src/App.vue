@@ -19,7 +19,7 @@ export default defineComponent({
     const theme: GlobalThemeOverrides = {
       common: {
         primaryColor: '#ef476f',
-        primaryColorHover: '#e2355e'
+        primaryColorHover: '#e2355e',
       },
     };
 
@@ -35,7 +35,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-
 :root {
   // COLORS
   --color-primary: #ef476f;
@@ -63,7 +62,7 @@ html {
 
 // Global styles
 
-.n-p, 
+.n-p,
 .n-h1,
 .n-button {
   margin: 0;
@@ -74,4 +73,28 @@ html {
   margin: 0 auto;
 }
 
+.Vue-Toastification__toast--info.custom_toast {
+  background-color: #29b6f6;
+  border: 1px solid #1795cf;
+}
+
+.Vue-Toastification__toast--success.custom_toast {
+  background-color: #66bb6a;
+  border: 1px solid #3ea043;
+}
+
+.Vue-Toastification__toast--error.custom_toast {
+  background-color: #e57373;
+  border: 1px solid #da6060;
+}
+
+.custom_toast {
+  .Vue-Toastification__toast-body {
+    min-width: 200px;
+    font-size: 1.4rem;
+    font-family: v-sans, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
+  }
+}
 </style>

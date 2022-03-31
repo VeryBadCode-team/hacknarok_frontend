@@ -48,7 +48,6 @@ import { SHA256, enc } from 'crypto-js';
 import { LoginModel } from '@/types';
 import { validateEmail } from '@/helpers';
 import { useAuth } from '@/store/auth';
-
 export default defineComponent({
   components: {
     NButton,
