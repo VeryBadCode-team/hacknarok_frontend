@@ -46,6 +46,9 @@ export default defineComponent({
 
   // SPACING
   --base-size: 0.8rem;
+
+  // OTHERS
+  --shadow-light: rgba(181, 186, 192, 0.2) 0px 8px 24px
 }
 
 *,

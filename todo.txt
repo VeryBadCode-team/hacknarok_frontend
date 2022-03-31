@@ -1,9 +1,9 @@
 TODO global:
-- add animations for signin and signup views
+- animations
 - user settings: upload avatar img
 - SignUp layout
-- password requirements tooltip
 - reload / logout user after email change (?)
+- subheader and copy for SignUp
 
 DONE : 
 - fix register when password and rest data isn't provided 
@@ -20,7 +20,7 @@ DONE :
 - toast helper 
 - toast more material like styles
 - similar toast messages format
-
+- password requirements tooltip
 
 
 

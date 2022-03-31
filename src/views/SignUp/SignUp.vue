@@ -23,9 +23,25 @@
             placeholder=""
             v-model:value="model.password"
           />
-          <icon size="20">
-            <information></information>
-          </icon>
+          <n-popover
+            trigger="hover"
+            placement="right"
+            class="sign-up__tooltip"
+          >
+            <template #trigger>
+              <icon size="20">
+                <information></information>
+              </icon>
+            </template>
+            Your password must:
+            <ul>
+              <li>Be at least 9 characters</li>
+              <li>Have at least one number</li>
+              <li>Have at least one symbol</li>
+              <li>Have at least one upper case letter</li>
+              <li>Have at least one lower case letter</li>
+            </ul>
+          </n-popover>
         </n-form-item>
         <password-meter :password="model.password" @score="handleScore" />
       </div>
@@ -56,6 +72,7 @@ import {
   FormItemInst,
   FormRules,
   NButton,
+  NPopover,
 } from 'naive-ui';
 import { Information } from '@vicons/carbon';
 import { Icon } from '@vicons/utils';
@@ -79,6 +96,7 @@ export default defineComponent({
     PasswordMeter,
     Information,
     Icon,
+    NPopover,
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
