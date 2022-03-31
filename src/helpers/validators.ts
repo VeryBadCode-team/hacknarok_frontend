@@ -7,3 +7,11 @@ export const validateEmail = (_: FormItemRule, value: string): boolean =>
 
 export const validatePhone = (_: FormItemRule, value: string): boolean =>
   /^\d{9}$/.test(value);
+  
+export const validateFullName = (_: FormItemRule, value: string): boolean =>
+  /(^[A-Za-z]{2,16})([ ]{0,1})([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})?([ ]{0,1})?([A-Za-z]{2,16})/.test(value);
+
+  export const validatePassword = (_: FormItemRule, value: string): boolean =>
+  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(value);
+
+

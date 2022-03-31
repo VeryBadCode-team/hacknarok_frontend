@@ -60,9 +60,14 @@ import {
   NButton,
 } from 'naive-ui';
 import { SignUpModel, SignUpModelPayload } from '@/types';
-import { validatePhone } from '@/helpers';
+import {
+  validatePhone,
+  splitFullName,
+  validateEmail,
+  validateFullName,
+  validatePassword,
+} from '@/helpers';
 import { useAuth } from '@/store/auth';
-import { splitFullName } from '@/helpers/splitFullName';
 
 export default defineComponent({
   components: {
@@ -93,14 +98,16 @@ export default defineComponent({
       name: [
         {
           required: true,
-          message: 'Field is required',
+          validator: validateFullName,
+          message: 'Invalid name',
           trigger: 'blur',
         },
       ],
       email: [
         {
           required: true,
-          message: 'Field is required',
+          validator: validateEmail,
+          message: 'Email address is incorrect',
           trigger: 'blur',
         },
       ],
@@ -119,16 +126,12 @@ export default defineComponent({
       password: [
         {
           required: true,
-          message: 'Field is required',
+          // validator: validatePassword,
+          message: 'Password is weak',
           trigger: 'blur',
         },
       ],
       reenteredPassword: [
-        {
-          required: true,
-          message: 'Field is required',
-          trigger: ['input', 'blur'],
-        },
         {
           validator: validatePasswordSame,
           message: 'Password is not same as re-entered password!',
@@ -147,7 +150,7 @@ export default defineComponent({
 
       const hashedPassword = SHA256(model.value.password);
 
-      const { firstName, lastName } = splitFullName(model.value.name);
+      const { firstName, lastName } = splitFullName(model.value.name.trim().split(' '));
 
       const payload: SignUpModelPayload = {
         firstName,

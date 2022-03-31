@@ -1,9 +1,11 @@
 TODO global:
-- create full name validator for signup 
-- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
 - toast helper 
 - toast more material like styles
 - add animations for signin and signup views
+- similar input errors messages format
+- similar toast messages format
+- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
+- strength checker component for password in signup
 
 
 DONE : 
@@ -12,6 +14,9 @@ DONE :
 - create helper which will take name and then return object as first and last name then update payload in signup
 - create signup and signin views
 - refactor router and views
+- create full name validator for signup 
+- handle full name like: 'Xin Zaho Tripple'
+
 
 
 2. SignUp (DONE)
