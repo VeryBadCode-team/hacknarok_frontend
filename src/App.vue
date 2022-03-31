@@ -40,7 +40,7 @@ export default defineComponent({
   --color-primary: #ef476f;
   --color-primary-dark: #e2355e;
   --color-light: #ffffff;
-  --color-dark: #18181b;
+  --color-dark: #1f2225;
   --color-gray-dark: #868686;
   --color-gray-light: #e7e7e7;
 
