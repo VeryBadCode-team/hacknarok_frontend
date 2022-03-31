@@ -1,10 +1,10 @@
 import axios from 'axios';
-
-export const baseURL = 'https://hacknarok-api.verybadcode.pl/'
+import { authHeader } from './authHeader';
 
 export default axios.create({
-  baseURL,
+  baseURL: 'https://hacknarok-api.verybadcode.pl/',
   headers: {
     'Content-type': 'application/json',
+    ...authHeader(),
   },
 });

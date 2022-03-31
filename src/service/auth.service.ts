@@ -1,5 +1,4 @@
-import instance, { baseURL } from './axios-config';
-
+import instance from './axios-config';
 import { LoginModel, UpdateUserPayload, SignUpModelPayload } from '@/types';
 
 class AuthService {
@@ -9,23 +8,11 @@ class AuthService {
   register(payload: SignUpModelPayload) {
     return instance.post('api/auth/register', payload);
   }
-  changeEmail(payload: UpdateUserPayload, token: string) {
-    return instance.post('api/user', payload, {
-      baseURL,
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  changeEmail(payload: UpdateUserPayload) {
+    return instance.post('api/user', payload);
   }
-  changePassword(payload: UpdateUserPayload, token: string) {
-    return instance.post('api/user/password', payload, {
-      baseURL,
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  changePassword(payload: UpdateUserPayload) {
+    return instance.post('api/user/password', payload);
   }
   // Example querry with param:
   getUser(id: string | number) {

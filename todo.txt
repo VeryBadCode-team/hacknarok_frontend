@@ -1,7 +1,4 @@
 TODO global:
-- toast helper 
-- toast more material like styles
-- similar toast messages format
 - add animations for signin and signup views
 - user settings: upload avatar img
 - SignUp layout
@@ -19,6 +16,9 @@ DONE :
 - strength checker component for password in signup
 - similar input errors messages format
 - user settings: change email, password
+- toast helper 
+- toast more material like styles
+- similar toast messages format
 
 
 
