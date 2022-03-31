@@ -108,11 +108,11 @@ export default defineComponent({
           trigger: 'blur',
         },
       ],
-      password: [
-        {
-          validator: validatePassword,
-        },
-      ],
+      // password: [
+      //   {
+      //     validator: validatePassword,
+      //   },
+      // ],
     };
 
     const handleCreateAccount = async (e: MouseEvent): Promise<void> => {
