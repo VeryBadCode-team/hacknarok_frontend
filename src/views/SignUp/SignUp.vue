@@ -30,9 +30,15 @@
         <password-meter :password="model.password" @score="handleScore" />
       </div>
 
-      <n-button type="primary" @click="handleCreateAccount">
-        Create Account
-      </n-button>
+      <div class="sign-up__buttons">
+        <n-button type="primary" @click="handleCreateAccount">
+          Create Account
+        </n-button>
+        <n-p
+          >Already have an account? &nbsp;
+          <router-link class="" to="/login">Sign In</router-link></n-p
+        >
+      </div>
     </n-form>
     <div class="sign-up__footer">
       <n-p>Terms of Service</n-p>
