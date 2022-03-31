@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 2rem;
-  
+
   flex: 1;
 
   &__form {
@@ -18,6 +18,18 @@
     }
   }
 
+  &__password {
+    margin-bottom: 2rem;
+    .n-form-item-blank {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .n-form-item-feedback-wrapper {
+      display: none;
+    }
+  }
+
   &__more {
     display: flex;
     justify-content: space-between;
@@ -27,7 +39,6 @@
   .n-h1 {
     margin-bottom: 2.4rem;
     text-align: center;
-
   }
 
   .n-button {

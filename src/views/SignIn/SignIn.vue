@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount, ref } from 'vue';
+import { defineComponent, ref } from 'vue';
 import {
   NInput,
   NH1,
@@ -48,7 +48,6 @@ import { SHA256, enc } from 'crypto-js';
 import { LoginModel } from '@/types';
 import { validateEmail } from '@/helpers';
 import { useAuth } from '@/store/auth';
-import { useRoute } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -63,11 +62,6 @@ export default defineComponent({
   setup() {
     const formRef = ref<FormInst | null>(null);
     const store = useAuth();
-    const route = useRoute();
-
-    onBeforeMount(() => {
-      console.log(route.path);
-    });
 
     const model = ref<LoginModel>({
       email: '',
@@ -79,14 +73,14 @@ export default defineComponent({
         {
           required: true,
           validator: validateEmail,
-          message: 'Invalid email address',
+          message: 'Please enter a valid email address',
           trigger: 'blur',
         },
       ],
       password: [
         {
           required: true,
-          message: 'Field is required',
+          message: 'Please enter your password',
           trigger: 'blur',
         },
       ],

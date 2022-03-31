@@ -8,6 +8,7 @@ import {
   LoginResponse,
   RegisterResponse,
   SignUpModelPayload,
+  UpdateUserPayload,
   User,
 } from '@/types';
 
@@ -18,12 +19,14 @@ export const useAuth = defineStore('auth', {
   actions: {
     async login(payload: LoginModel): Promise<void> {
       try {
-        const response: AxiosResponse<LoginResponse, any> = await AuthService.login(payload);
+        const response: AxiosResponse<LoginResponse, any> =
+          await AuthService.login(payload);
         this.user = response.data;
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         router.push('/authenticated');
       } catch (err) {
-        console.error(err);
+        // TODO - toast here
+        // msg: Invalid credentials. Please try again.
       }
     },
     async register(payload: SignUpModelPayload): Promise<void> {
@@ -38,12 +41,27 @@ export const useAuth = defineStore('auth', {
           this.login(newPayload);
         }
       } catch (err) {
-        console.error(err);
+        // TODO - toast here
+      }
+    },
+    async changeEmail(payload: UpdateUserPayload): Promise<void> {
+      try {
+        await AuthService.changeEmail(payload, this.user.token.type);
+        // TODO - toast here
+      } catch (err) {
+        // TODO - toast here
+      }
+    },
+    async changePassword(payload: UpdateUserPayload): Promise<void> {
+      try {
+        await AuthService.changePassword(payload, this.user.token.type);
+        // TODO - toast here
+      } catch (err) {
+        // TODO - toast here
       }
     },
     logout(): void {
-      this.user = {} as User,
-      router.push('/');
+      (this.user = {} as User), router.push('/');
       localStorage.removeItem('currentUser');
     },
   },

@@ -16,21 +16,13 @@
       <n-form-item path="phone" label="Phone (removed?)">
         <n-input type="text" placeholder="" v-model:value="model.phone" />
       </n-form-item>
-      <n-form-item path="password" label="Password">
+      <n-form-item path="password" label="Password" class="sign-up__password">
         <n-input
           type="password"
           placeholder=""
           v-model:value="model.password"
         />
-      </n-form-item>
-      <n-form-item path="reenteredPassword" label="Re-enter password">
-        <n-input
-          ref="rPasswordFormItemRef"
-          first
-          type="password"
-          placeholder=""
-          v-model:value="model.reenteredPassword"
-        />
+        <password-meter :password="model.password" />
       </n-form-item>
       <n-button type="primary" @click="handleCreateAccount">
         Create Account
@@ -47,6 +39,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { SHA256, enc } from 'crypto-js';
+import PasswordMeter from 'vue-simple-password-meter';
 import {
   NInput,
   NH1,
@@ -56,7 +49,6 @@ import {
   FormInst,
   FormItemInst,
   FormRules,
-  FormItemRule,
   NButton,
 } from 'naive-ui';
 import { SignUpModel, SignUpModelPayload } from '@/types';
@@ -77,6 +69,7 @@ export default defineComponent({
     NH1,
     NP,
     NInput,
+    PasswordMeter,
   },
   setup() {
     const formRef = ref<FormInst | null>(null);
@@ -88,18 +81,14 @@ export default defineComponent({
       email: '',
       phone: '',
       password: '',
-      reenteredPassword: '',
     });
-
-    const validatePasswordSame = (_: FormItemRule, value: string): boolean =>
-      value === model.value.password;
 
     const rules: FormRules = {
       name: [
         {
           required: true,
           validator: validateFullName,
-          message: 'Invalid name',
+          message: 'Please enter both first and last name',
           trigger: 'blur',
         },
       ],
@@ -107,35 +96,21 @@ export default defineComponent({
         {
           required: true,
           validator: validateEmail,
-          message: 'Email address is incorrect',
+          message: 'Please enter a valid email address',
           trigger: 'blur',
         },
       ],
       phone: [
         {
           required: false,
-          message: 'Field is required',
+          // validator: validatePhone,
+          message: 'Please enter a valid phone number',
           trigger: 'blur',
         },
-        // {
-        //   validator: validatePhone,
-        //   message: 'Phone number must have 9 digits',
-        //   trigger: 'blur',
-        // },
       ],
       password: [
         {
-          required: true,
-          // validator: validatePassword,
-          message: 'Password is weak',
-          trigger: 'blur',
-        },
-      ],
-      reenteredPassword: [
-        {
-          validator: validatePasswordSame,
-          message: 'Password is not same as re-entered password!',
-          trigger: ['blur', 'password-input'],
+          validator: validatePassword,
         },
       ],
     };
@@ -150,7 +125,9 @@ export default defineComponent({
 
       const hashedPassword = SHA256(model.value.password);
 
-      const { firstName, lastName } = splitFullName(model.value.name.trim().split(' '));
+      const { firstName, lastName } = splitFullName(
+        model.value.name.trim().split(' '),
+      );
 
       const payload: SignUpModelPayload = {
         firstName,
@@ -168,7 +145,7 @@ export default defineComponent({
       rPasswordFormItemRef,
       model,
       rules,
-      handleCreateAccount,
+        handleCreateAccount,
     };
   },
 });

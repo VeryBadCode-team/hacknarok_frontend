@@ -12,7 +12,8 @@
     "crypto-js": "^4.1.1",
     "pinia": "^2.0.12",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue-simple-password-meter": "^1.1.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",

@@ -1,12 +1,11 @@
 TODO global:
 - toast helper 
 - toast more material like styles
-- add animations for signin and signup views
-- similar input errors messages format
 - similar toast messages format
-- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
-- strength checker component for password in signup
-
+- add animations for signin and signup views
+- user settings: upload avatar img
+- SignUp layout
+- reload / logout user after email change (?)
 
 DONE : 
 - fix register when password and rest data isn't provided 
@@ -16,6 +15,11 @@ DONE :
 - refactor router and views
 - create full name validator for signup 
 - handle full name like: 'Xin Zaho Tripple'
+- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
+- strength checker component for password in signup
+- similar input errors messages format
+- user settings: change email, password
+
 
 
 
