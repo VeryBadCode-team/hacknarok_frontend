@@ -22,6 +22,8 @@ DONE :
 - similar toast messages format
 - password requirements tooltip
 
+deploy trigger
+
 
 
 2. SignUp (DONE)
