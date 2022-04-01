@@ -48,7 +48,7 @@ export default defineComponent({
   --base-size: 0.8rem;
 
   // OTHERS
-  --shadow-light: rgba(181, 186, 192, 0.2) 0px 8px 24px
+  --shadow-light: rgba(181, 186, 192, 0.2) 0px 8px 24px;
 }
 
 *,
@@ -67,6 +67,7 @@ html {
 
 .n-p,
 .n-h1,
+.n-h2,
 .n-button {
   margin: 0;
 }

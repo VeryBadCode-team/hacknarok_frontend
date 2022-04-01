@@ -1,7 +1,8 @@
 <template>
   <div class="sign-in">
     <n-form :model="model" :rules="rules" ref="formRef" class="sign-in__form">
-      <n-h1>Sign in to Hejka</n-h1>
+      <n-h1>Welcome to VeryBadCode</n-h1>
+      <n-h2>Sign in to continue</n-h2>
       <n-form-item path="email" label="Email">
         <n-input type="text" placeholder="" v-model:value="model.email" />
       </n-form-item>
@@ -37,6 +38,7 @@ import { defineComponent, ref } from 'vue';
 import {
   NInput,
   NH1,
+  NH2,
   NForm,
   NFormItem,
   FormRules,
@@ -56,6 +58,7 @@ export default defineComponent({
     NCheckbox,
     NFormItem,
     NH1,
+    NH2,
     NInput,
     NP,
   },

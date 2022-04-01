@@ -27,9 +27,16 @@
     }
   }
 
-  .n-h1 {
-    margin-bottom: 2.4rem;
+  .n-h1,
+  .n-h2 {
+    margin-bottom: 1.6rem;
     text-align: center;
+  }
+
+  .n-h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--color-gray-dark);
   }
 
   .n-button {
