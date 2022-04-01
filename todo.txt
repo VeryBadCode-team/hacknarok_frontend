@@ -22,7 +22,7 @@ DONE :
 - similar toast messages format
 - password requirements tooltip
 
-deploy trigger
+deploy trigger1
 
 
 
