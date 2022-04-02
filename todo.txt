@@ -1,0 +1,41 @@
+TODO global:
+- animations
+- user settings: upload avatar img
+- SignUp layout
+- reload / logout user after email change (?)
+- types refactor
+
+DONE : 
+- fix register when password and rest data isn't provided 
+- move First Name and Last Name to Name then slice it in order to send data to backend as firstName and lastName and refactor models
+- create helper which will take name and then return object as first and last name then update payload in signup
+- create signup and signin views
+- refactor router and views
+- create full name validator for signup 
+- handle full name like: 'Xin Zaho Tripple'
+- create password validator for signup - like require 1 uppercase letter and 1 number and to be at least 8 chars length
+- strength checker component for password in signup
+- similar input errors messages format
+- user settings: change email, password
+- toast helper 
+- toast more material like styles
+- similar toast messages format
+- password requirements tooltip
+- subheader and copy for SignUp
+- deploy trigger1
+
+
+
+2. SignUp (DONE)
+- Nowy komponent (a)
+- Nową sciezka dla niego w router np. /signup (DONE)
+- jakiś button który będzie owrapowany w <router-link> (DONE)
+- (b) na podstawie VLogin stworzyć formularz (DONE)
+    - dodać firstName, lastName oraz nr telefonu który zwalidować tak zeby przyjmowal tylko 9 liczb (walidacje zrobić jako helper) (DONE)
+    - dodać te pola ^ do model (DONE)
+    - LoginModelType - przerobić pod rejestrowanie (DONE)
+    - oraz to samo dla rules i FormRules (DONE)
+    - payload - przerobić (DONE)
+- zrobić zapytanie w user.service (DONE)
+- uzyc go w actions w storze - nowa akcja (DONE)
+- ktora nastepnie wywolac w stworzonym komponencie (DONE)
