@@ -10,6 +10,7 @@ import {
   SignUpModelPayload,
   UpdateUserPayload,
   User,
+  UserPayload,
 } from '@/types';
 import { ToastType } from '@/types';
 import { toastNotification } from '@/helpers';
@@ -62,6 +63,14 @@ export const useAuth = defineStore('auth', {
         toastNotification(ToastType.SUCCESS, 'Password changed succesfully.');
       } catch (err) {
         toastNotification(ToastType.ERROR, 'Password cannot be changed');
+      }
+    },
+    async update(payload: UserPayload): Promise<void> {
+      try {
+        await AuthService.update(payload);
+        toastNotification(ToastType.SUCCESS, 'User updated succesfully.');
+      } catch (err) {
+        toastNotification(ToastType.ERROR, 'User cannot be updated');
       }
     },
     logout(): void {

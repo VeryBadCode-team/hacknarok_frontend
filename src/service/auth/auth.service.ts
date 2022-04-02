@@ -1,5 +1,10 @@
 import instance from '../axios-config';
-import { LoginModel, UpdateUserPayload, SignUpModelPayload } from '@/types';
+import {
+  LoginModel,
+  UpdateUserPayload,
+  SignUpModelPayload,
+  UserPayload,
+} from '@/types';
 
 class AuthService {
   login(payload: LoginModel) {
@@ -13,6 +18,9 @@ class AuthService {
   }
   changePassword(payload: UpdateUserPayload) {
     return instance.post('api/user/password', payload);
+  }
+  update(payload: UserPayload) {
+    return instance.post('api/user', payload);
   }
   // Example querry with param:
   getUser(id: string | number) {

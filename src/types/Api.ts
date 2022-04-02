@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from './User';
 
 export interface RegisterResponse {
   id: string;
@@ -6,6 +6,12 @@ export interface RegisterResponse {
 
 export interface LoginResponse extends User {}
 
-export interface FilePayload {
-  file: string;
+export interface UpdateUserModel {
+  email: string;
+  password: string;
+}
+
+export interface UpdateUserPayload {
+  email?: string;
+  password?: string;
 }

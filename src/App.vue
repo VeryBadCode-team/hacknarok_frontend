@@ -68,6 +68,7 @@ html {
 .n-p,
 .n-h1,
 .n-h2,
+.n-h3,
 .n-button {
   margin: 0;
 }
@@ -106,8 +107,13 @@ html {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .secondary-heading {
   font-size: 2.8rem;
   margin-bottom: 2.4rem;
+
 }
 </style>

@@ -7,10 +7,6 @@
   align-items: center;
   justify-content: space-between;
 
-  .router-link-active {
-    text-decoration: none;
-  }
-
   &__button {
     color: var(--color-dark);
   }
@@ -29,6 +25,7 @@
 
     .n-p {
       font-size: 2rem;
+      font-weight: 500;
     }
   }
 

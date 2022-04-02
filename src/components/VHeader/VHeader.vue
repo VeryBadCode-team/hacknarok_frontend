@@ -58,4 +58,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./VHeader.scss" />
+<style lang="scss" src="./VHeader.scss" scoped />

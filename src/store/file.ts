@@ -2,26 +2,27 @@ import { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 
 import FileService from '@/service/file/file.service';
-import { File, FilePayload, RegisterResponse } from '@/types';
+import { Avatar, UserPayload } from '@/types';
 import { ToastType } from '@/types';
 import { toastNotification } from '@/helpers';
+import { useAuth } from './auth';
 
 export const useFile = defineStore('file', {
   state: () => ({
-    file: {} as File,
+    file: {} as string,
   }),
   actions: {
-    async upload(payload: FilePayload): Promise<void> {
+    async upload(payload: FormData): Promise<void> {
       try {
-        const response: AxiosResponse<any, any> = await FileService.upload(
+        const response: AxiosResponse<Avatar, any> = await FileService.upload(
           payload,
         );
-        console.log(response.data)
-        // if (response.data.id) {
-        //   const newPayload: LoginModel = {
-        //     email: payload.email,
-        //     password: payload.password,
-        //   };
+        const auth = useAuth();
+        auth.user.avatar = response.data;
+        const userPayload: UserPayload = {
+          avatarId: auth.user.avatar.id,
+        };
+        auth.update(userPayload);
       } catch (err) {
         toastNotification(ToastType.ERROR, 'Something is wrong');
       }

@@ -22,13 +22,3 @@ export interface FullName {
   firstName: string;
   lastName: string;
 }
-
-export interface UpdateUserModel {
-  email: string;
-  password: string;
-}
-
-export interface UpdateUserPayload {
-  email?: string;
-  password?: string;
-}

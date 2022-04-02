@@ -1,0 +1,64 @@
+.header {
+  font-size: 4rem;
+  padding: 2rem 0;
+  width: 100%;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .n-p {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 2rem;
+
+    & > * {
+      cursor: pointer;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 1px;
+    background-color: var(--color-gray-light);
+    top: 100%;
+    left: -20%;
+  }
+
+  &__avatar {
+    position: relative;
+
+    .n-avatar {
+      cursor: pointer;
+    }
+
+    input[type='file'] {
+      display: none;
+    }
+  }
+}
