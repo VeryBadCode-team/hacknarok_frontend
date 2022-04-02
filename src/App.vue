@@ -75,10 +75,6 @@ html {
 .container {
   max-width: 120rem;
   margin: 0 auto;
-
-  @include respond(mobile) {
-    padding: 3rem;
-  }
 }
 
 .Vue-Toastification__toast--info.custom_toast {

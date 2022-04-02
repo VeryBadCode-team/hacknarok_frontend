@@ -1,6 +1,4 @@
 // HACKNAROK FRONTEDN TODO
 
-- change favicon and title
-- jak zacząc copywriting
 - lanidng page ozdoby
-- zmina tekstu na PL w signin i singup
+- poprawić cardsy !

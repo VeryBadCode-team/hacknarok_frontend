@@ -8,7 +8,7 @@
           twarze oraz będziesz miał okazje robić to wszystko przy okazji
           ciekawych aktywości
         </n-p>
-        <n-button type="primary">Zorganizuj Spotkanie</n-button>
+        <n-button type="primary">Zorganizuj spotkanie</n-button>
       </div>
 
       <img
