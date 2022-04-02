@@ -85,11 +85,29 @@ export interface token {
   type: string;
 }
 
+export interface Avatar {
+  id: string;
+  name: string;
+  extension: string;
+  timestamp: number;
+}
+
 export interface User {
   id: string;
   email: string;
   firstName: string;
   lastName: string;
+  avatar: Avatar;
   roles: userRoles[];
   token: token;
+}
+
+export interface UserPayload {
+  avatarId?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  avatar?: Avatar;
+  roles?: userRoles[];
+  token?: token;
 }

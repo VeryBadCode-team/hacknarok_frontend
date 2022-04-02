@@ -4,6 +4,7 @@ import { createPinia } from 'pinia';
 import router from './router';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+import 'leaflet/dist/leaflet.css';
 
 const app = createApp(App);
 

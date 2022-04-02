@@ -1,8 +1,7 @@
-import { FilePayload } from '@/types';
 import instance from '../axios-config';
 
 class FileService {
-  upload(payload: FilePayload) {
+  upload(payload: FormData) {
     return instance.post('api/drive/upload', payload);
   }
 }

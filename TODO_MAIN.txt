@@ -4,3 +4,4 @@
 - jak zacząc copywriting
 - lanidng page ozdoby
 - zmina tekstu na PL w signin i singup
+- wyrzucic libke z ikonami

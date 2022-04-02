@@ -101,4 +101,8 @@ html {
       'Segoe UI Symbol';
   }
 }
+
+a {
+  text-decoration: none;
+}
 </style>
