@@ -1,9 +1,9 @@
 <template>
   <div class="sign-up">
     <n-form ref="formRef" :model="model" :rules="rules" class="sign-up__form">
-      <n-h1>Don't have an account?</n-h1>
-      <n-h2>Fill out to create one</n-h2>
-      <n-form-item path="name" label="Full Name">
+      <n-h1>Nie masz jeszcze konta?</n-h1>
+      <n-h2>Dołącz do naszej społeczności wypełniając formularz</n-h2>
+      <n-form-item path="name" label="Imię i nazwisko">
         <n-input
           type="text"
           placeholder=""
@@ -15,7 +15,7 @@
         <n-input type="text" placeholder="" v-model:value="model.email" />
       </n-form-item>
       <div class="sign-up__password-container">
-        <n-form-item path="password" label="Password" class="sign-up__password">
+        <n-form-item path="password" label="Hasło" class="sign-up__password">
           <n-input
             type="password"
             placeholder=""
@@ -27,13 +27,13 @@
                 <information></information>
               </icon>
             </template>
-            Your password must:
+            Hasło musi zawierać:
             <ul>
-              <li>Be at least 9 characters</li>
-              <li>Have at least one number</li>
-              <li>Have at least one symbol</li>
-              <li>Have at least one upper case letter</li>
-              <li>Have at least one lower case letter</li>
+              <li>Przynajmniej 9 znaków</li>
+              <li>Przynajmniej 1 cyfrę</li>
+              <li>Przynajmniej jeden symbol specjalny</li>
+              <li>Przynajmniej jedną wielką literę</li>
+              <li>Przynajmniej jedną małą literę</li>
             </ul>
           </n-popover>
         </n-form-item>
@@ -42,17 +42,17 @@
 
       <div class="sign-up__buttons">
         <n-button type="primary" @click="handleCreateAccount">
-          Create Account
+          Stwórz konto
         </n-button>
         <n-p
-          ><span> Already have an account? </span>
-          <router-link to="/login">Sign In</router-link>
+          ><span> Masz już konto? </span>
+          <router-link to="/login">Zaloguj się</router-link>
         </n-p>
       </div>
     </n-form>
     <div class="sign-up__footer">
-      <n-p>Terms of Service</n-p>
-      <n-p>Contact Support</n-p>
+      <n-p>Warunki użytkowania</n-p>
+      <n-p>Pomoc techniczna</n-p>
       <n-p>&copy; JoinMe 2022</n-p>
     </div>
   </div>
