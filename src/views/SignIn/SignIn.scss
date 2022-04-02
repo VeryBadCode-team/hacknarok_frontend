@@ -4,6 +4,10 @@
   align-items: center;
   padding-bottom: 2rem;
 
+  @include respond(tab-small) {
+    // color: $font-color-primary;
+  }
+
   flex: 1;
 
   &__form {
