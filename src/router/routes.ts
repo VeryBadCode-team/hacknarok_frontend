@@ -3,17 +3,18 @@ const SignIn = () => import('@/views/SignIn/SignIn.vue');
 const SignUp = () => import('@/views/SignUp/SignUp.vue');
 const Wrapper = () => import('@/views/Wrapper/Wrapper.vue');
 const VSuccess = () => import('@/components/VSuccess.vue');
+const DChat = () => import('@/components/DChat/DChat.vue');
 
 const routes = [
   {
     path: '/',
-    component: HomeView,
+    component: DChat,
     meta: { guest: true },
-    children: [
-      { path: 'signup', component: SignUp, meta: { guest: true } },
-      { path: 'login', component: SignIn, meta: { guest: true } },
-      { path: '/', component: Wrapper, meta: { guest: true } },
-    ],
+    // children: [
+    //   { path: 'signup', component: SignUp, meta: { guest: true } },
+    //   { path: 'login', component: SignIn, meta: { guest: true } },
+    //   { path: '/', component: Wrapper, meta: { guest: true } },
+    // ],
   },
   { path: '/authenticated', component: VSuccess, meta: { requiresAuth: true } },
   { path: '/:notFound(.*)', redirect: '/', meta: { guest: true } },
