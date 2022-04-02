@@ -14,9 +14,6 @@
       <n-form-item path="email" label="Email">
         <n-input type="text" placeholder="" v-model:value="model.email" />
       </n-form-item>
-      <n-form-item path="phone" label="Phone (removed?)">
-        <n-input type="text" placeholder="" v-model:value="model.phone" />
-      </n-form-item>
       <div class="sign-up__password-container">
         <n-form-item path="password" label="Password" class="sign-up__password">
           <n-input
@@ -56,7 +53,7 @@
     <div class="sign-up__footer">
       <n-p>Terms of Service</n-p>
       <n-p>Contact Support</n-p>
-      <n-p>&copy; Hejka 2022</n-p>
+      <n-p>&copy; JoinMe 2022</n-p>
     </div>
   </div>
 </template>
