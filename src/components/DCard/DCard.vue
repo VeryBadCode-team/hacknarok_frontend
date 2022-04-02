@@ -6,11 +6,32 @@
           size="large"
           src="https://bi.im-g.pl/im/15/b7/15/z22769941AMP,Shrek.jpg"
         />
-        <n-p>Joanna</n-p>
-        <div class="card__start">starts</div>
-        <div class="card__distance">disntance</div>
+        <n-p class="card__name">Joanna</n-p>
+        <div class="card__stars">
+          <div class="card__icon">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
+          </div>
+          <div class="card__icon">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
+          </div>
+          <div class="card__icon">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
+          </div>
+          <div class="card__icon">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
+          </div>
+          <div class="card__icon">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
+          </div>
+        </div>
+        <div class="card__distance">3 kilometry stąd</div>
       </div>
-      <div class="card__highlighted">wyroznione</div>
+      <div class="card__highlighted">
+        <div class="card__icon">
+          <img src="@/assets/images/icons/star.svg" alt="star" />
+        </div>
+        <n-p class="card__text">Wyróżnione</n-p>
+      </div>
     </div>
     <div class="card__body">
       <div class="card__headline">
@@ -21,12 +42,23 @@
       </div>
       <n-p>Lorem ipsum dolor sit amet, consectetur asdegd adipiscing elit.</n-p>
     </div>
+    <div class="card__footer">
+      <div class="people-counter">
+        <img
+          class="people-counter__icon"
+          src="src\assets\images\icons\person.svg"
+          alt="Users account"
+        />
+        <n-p class="people-counter__number">1/2</n-p>
+      </div>
+      <n-button type="primary">Dołącz</n-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { NP, NAvatar, NH3 } from 'naive-ui';
+import { NP, NAvatar, NH3, NButton } from 'naive-ui';
 import { Meeting } from '@/types';
 
 export default defineComponent({
@@ -34,6 +66,7 @@ export default defineComponent({
     NP,
     NH3,
     NAvatar,
+    NButton,
   },
   props: {
     meeting: {
