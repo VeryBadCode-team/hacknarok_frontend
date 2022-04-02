@@ -1,0 +1,134 @@
+.footer {
+  padding-top: 12.8rem;
+  position: relative;
+
+  &__grid {
+    display: grid;
+    row-gap: 2.4rem;
+    column-gap: 6.4rem;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto;
+
+    @include respond(tab-small) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include respond(tab-medium) {
+      row-gap: 4.8rem;
+    }
+
+    .footer-link:link,
+    .footer-link:visited {
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: #767676;
+      transition: all 0.3s;
+
+      .footer-link__social-icon {
+        height: 2.4rem;
+        width: 2.4rem;
+      }
+    }
+
+    .footer-link:hover,
+    .footer-link:active {
+      color: #555;
+    }
+
+    .logo-col {
+      display: flex;
+      flex-direction: column;
+
+      @include respond(tab-medium) {
+        grid-column: span 3;
+      }
+
+      &__logo-container {
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          width: 6.4rem;
+          text-decoration: none;
+          margin-bottom: 3.2rem;
+          color: var(--color-gray-dark);
+
+          &__image {
+            display: block;
+            // width: 6.4rem;
+          }
+
+          &__name {
+            font-size: 2rem;
+            color: rgb(51, 54, 57);
+          }
+        }
+      }
+
+      &__social-links {
+        list-style: none;
+        display: flex;
+        gap: 2.4rem;
+      }
+    }
+
+    .address-col {
+      @include respond(tab-medium) {
+        grid-column: span 3;
+      }
+
+      .contacts {
+        font-style: normal;
+        font-size: 1.6rem;
+        line-height: 1.6;
+      }
+
+      .address {
+        margin-bottom: 2.4rem;
+      }
+    }
+
+    .nav-col {
+      @include respond(tab-medium) {
+        grid-row: 2;
+        grid-column: span 2;
+        margin-bottom: 3.2rem;
+      }
+    }
+  }
+
+  .footer-heading {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 4rem;
+  }
+
+  .footer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .copyright {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-gray-dark);
+
+    @include respond(tab-medium) {
+      grid-row: 3;
+      grid-column: span 5;
+    }
+  }
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 1px;
+  background-color: var(--color-gray-light);
+  top: 15%;
+  left: -20%;
+}
