@@ -32,6 +32,7 @@
   </div>
 </template>
 <script lang="ts">
+import { defineComponent, onBeforeMount, ref } from 'vue';
 import 'leaflet/dist/leaflet.css';
 import {
   LMap,
@@ -42,9 +43,10 @@ import {
 } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import DCards from './DCards/DCards.vue';
-import MeetingService from "@/service/meeting/meeting.service";
+import MeetingService from '@/service/meeting/meeting.service';
+import { Meeting } from '@/types';
 
-export default {
+export default defineComponent({
   name: 'EditBusStopConnectionView',
   components: {
     DCards,
@@ -54,33 +56,42 @@ export default {
     LPopup,
     LControlLayers,
   },
-  data() {
-    return {
-      meetings: [],
-      map: {
-        zoom: 16,
-        maxZoom: 19,
-        center: [50.01253, 20.99302],
-        markers: [],
-      },
-      isLoading: true,
-      runningIcon: icon({
-        iconUrl: 'https://hacknarok-api.verybadcode.pl/api/drive/uploads/c92b384c-65c0-4159-a242-55d7ff33ca61',
+  setup() {
+    const meetings = ref<Meeting[]>([]);
+    // unused var
+    const isLoading = ref(false);
+
+    const map = {
+      zoom: 16,
+      maxZoom: 19,
+      center: [50.01253, 20.99302],
+      markers: [],
+    };
+
+    const runningIcon = ref(
+      icon({
+        iconUrl:
+          'https://hacknarok-api.verybadcode.pl/api/drive/uploads/c92b384c-65c0-4159-a242-55d7ff33ca61',
         iconSize: [40, 40],
       }),
+    );
+
+    const fetchData = () => {
+      MeetingService.getAllEvents().then((response) => {
+        meetings.value = response.data;
+      });
+    };
+
+    onBeforeMount(() => {
+      fetchData();
+    });
+
+    return {
+      runningIcon,
+      map,
     };
   },
-  mounted() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      MeetingService.getAllEvents().then((response) => {
-        this.meetings = response.data;
-      });
-    }
-  },
-};
+});
 </script>
 
 <style lang="scss" src="./DPanel.scss" />
