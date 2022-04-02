@@ -18,4 +18,11 @@
       @content;
     }
   }
+
+  // 1300 px
+  @if $breakpoint == desktop {
+    @media (max-width: 81.25em) {
+      @content;
+    }
+  }
 }

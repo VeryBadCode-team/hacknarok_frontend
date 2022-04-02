@@ -1,6 +1,12 @@
 .home {
+  @include respond(desktop) {
+    // color: $font-color-primary;
+    padding: 0 6rem;
+  }
+
   min-height: 100vh;
 
   display: flex;
+  align-self: center;
   flex-direction: column;
 }
