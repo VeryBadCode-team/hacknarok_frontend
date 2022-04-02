@@ -18,8 +18,8 @@ export default defineComponent({
 
     const theme: GlobalThemeOverrides = {
       common: {
-        primaryColor: '#ef476f',
-        primaryColorHover: '#e2355e',
+        primaryColor: '#2FA9B1',
+        primaryColorHover: '#2FA9B1',
       },
     };
 
@@ -37,8 +37,8 @@ export default defineComponent({
 <style lang="scss">
 :root {
   // COLORS
-  --color-primary: #ef476f;
-  --color-primary-dark: #e2355e;
+  --color-primary: #2fa9b1;
+  --color-primary-dark: #2fa9b1;
   --color-light: #ffffff;
   --color-dark: #1f2225;
   --color-gray-dark: #868686;

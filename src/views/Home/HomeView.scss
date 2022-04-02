@@ -1,6 +1,5 @@
 .home {
   @include respond(desktop) {
-    // color: $font-color-primary;
     padding: 0 6rem;
   }
 

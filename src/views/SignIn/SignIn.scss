@@ -45,6 +45,10 @@
 
   .n-button {
     width: 100%;
+    &:hover {
+      background-color: var(--color-light);
+      color: var(--color-dark);
+    }
   }
 
   &__buttons {

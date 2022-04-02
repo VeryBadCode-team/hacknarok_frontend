@@ -1,11 +1,36 @@
 .header {
   font-size: 4rem;
-  padding: 1rem 0;
+  padding: 2rem 0;
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .router-link-active {
+    text-decoration: none;
+  }
+
+  &__button {
+    color: var(--color-dark);
+  }
+
+  .n-button {
+    &:hover {
+      background-color: var(--color-light);
+      color: var(--color-dark);
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .n-p {
+      font-size: 2rem;
+    }
+  }
 
   &__nav {
     display: flex;
