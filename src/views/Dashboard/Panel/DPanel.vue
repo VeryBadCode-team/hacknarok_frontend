@@ -11,9 +11,9 @@
         ></l-tile-layer>
         <l-control-layers />
         <l-marker
-          v-for="(marker, index) in map.markers"
+          v-for="(marker, index) in meetings"
           :key="'marker-' + index"
-          v-model:lat-lng="map.markers[index]"
+          v-model:lat-lng="meetings[index]"
           :icon="runningIcon"
         >
           <l-popup>
@@ -47,7 +47,7 @@ import MeetingService from '@/service/meeting/meeting.service';
 import { Meeting } from '@/types';
 
 export default defineComponent({
-  name: 'EditBusStopConnectionView',
+  name: 'DPanel',
   components: {
     DCards,
     LMap,
@@ -61,12 +61,11 @@ export default defineComponent({
     // unused var
     const isLoading = ref(false);
 
-    const map = {
+    const map = ref({
       zoom: 16,
       maxZoom: 19,
       center: [50.01253, 20.99302],
-      markers: [],
-    };
+    });
 
     const runningIcon = ref(
       icon({
@@ -79,6 +78,7 @@ export default defineComponent({
     const fetchData = () => {
       MeetingService.getAllEvents().then((response) => {
         meetings.value = response.data;
+        alert('loaded markers');
       });
     };
 
@@ -89,6 +89,7 @@ export default defineComponent({
     return {
       runningIcon,
       map,
+      meetings,
     };
   },
 });
