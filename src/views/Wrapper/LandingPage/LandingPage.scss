@@ -75,6 +75,7 @@
     @include respond(tab-small) {
       order: 1;
       width: 50%;
+      margin-top: 6rem;
     }
   }
 }
