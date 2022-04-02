@@ -42,47 +42,40 @@
       </div>
 
       <div class="address-col">
-        <p class="footer-heading">Contact us</p>
+        <p class="footer-heading">Kontakt</p>
         <address class="contacts">
-          <p class="contacts__address">
-            623 Harrison St., 2nd Floor, San Francisco, CA 94107
-          </p>
+          <p class="contacts__address">Mickiewicza 8, 33-100 Tarnów</p>
           <p>
-            <a class="footer-link" href="tel:415-201-6370">415-201-6370</a
-            ><br />
+            <a class="footer-link" href="tel:123-456-789">123-456-789</a><br />
             <a class="footer-link" href="mailto:hello@omnifood.com"
-              >hello@omnifood.com</a
+              >verybadcode@business.com</a
             >
           </p>
         </address>
       </div>
 
       <nav class="nav-col">
-        <p class="footer-heading">Account</p>
+        <p class="footer-heading">Konto</p>
         <ul class="footer-nav">
-          <li><a class="footer-link" href="#">Create account</a></li>
-          <li><a class="footer-link" href="#">Sign in</a></li>
-          <li><a class="footer-link" href="#">iOS app</a></li>
-          <li><a class="footer-link" href="#">Android app</a></li>
+          <li><a class="footer-link" href="#">Zarejestruj się</a></li>
+          <li><a class="footer-link" href="#">Zaloguj się</a></li>
         </ul>
       </nav>
 
       <nav class="nav-col">
-        <p class="footer-heading">Company</p>
+        <p class="footer-heading">O nas</p>
         <ul class="footer-nav">
-          <li><a class="footer-link" href="#">About Omnifood</a></li>
-          <li><a class="footer-link" href="#">For Business</a></li>
-          <li><a class="footer-link" href="#">Cooking partners</a></li>
-          <li><a class="footer-link" href="#">Careers</a></li>
+          <li><a class="footer-link" href="#">Kilka słów o nas</a></li>
+          <li><a class="footer-link" href="#">Jak to działa</a></li>
+          <li><a class="footer-link" href="#">Kariera</a></li>
         </ul>
       </nav>
 
       <nav class="nav-col">
-        <p class="footer-heading">Resources</p>
+        <p class="footer-heading">Przydatne linki</p>
         <ul class="footer-nav">
-          <li><a class="footer-link" href="#">Recipe directory</a></li>
-          <li><a class="footer-link" href="#">Help center</a></li>
-          <li><a class="footer-link" href="#">Privacy & terms</a></li>
+          <li><a class="footer-link" href="#">Pomoc</a></li>
+          <li><a class="footer-link" href="#">Polityka prywatności</a></li>
         </ul>
       </nav>
       <p class="copyright">
