@@ -68,6 +68,7 @@ html {
 .n-p,
 .n-h1,
 .n-h2,
+.n-h3,
 .n-button {
   margin: 0;
 }

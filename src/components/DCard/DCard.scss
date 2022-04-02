@@ -1,0 +1,40 @@
+.card {
+  border: 2px solid red;
+
+  &__header {
+    border: 5px solid blue;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__profile {
+    border: 2px solid red;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+    .n-avatar {
+      width: 8rem;
+      height: 8rem;
+      grid-row: 1/-1;
+    }
+  }
+
+  &__headline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pin {
+    padding: 0.5rem 0;
+    background: var(--color-primary);
+    max-width: 5rem;
+    border-radius: 5rem;
+    flex: 1;
+
+    display: grid;
+    place-items: center;
+  }
+}

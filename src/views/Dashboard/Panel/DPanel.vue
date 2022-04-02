@@ -1,7 +1,9 @@
 <!-- @ts-ignore -->
 <template>
   <div class="dashboard">
-    <div class="dashboard__cards">cards...</div>
+    <div class="dashboard__cards">
+      <d-cards></d-cards>
+    </div>
     <div class="dashboard__map">
       <l-map ref="map" :zoom="11" :max-zoom="maxZoom" :center="center">
         <div class="map-toolbox">
@@ -40,6 +42,7 @@ import {
   LControlLayers,
 } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
+import DCards from './DCards/DCards.vue';
 
 export default {
   name: 'EditBusStopConnectionView',
@@ -48,6 +51,7 @@ export default {
     to: Number,
   },
   components: {
+    DCards,
     LMap,
     LTileLayer,
     LPolyline,
