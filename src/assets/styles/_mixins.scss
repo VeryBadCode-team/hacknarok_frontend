@@ -12,6 +12,14 @@
       @content;
     }
   }
+
+  // 896 px
+  @if $breakpoint == tab-medium {
+    @media (max-width: 58em) {
+      @content;
+    }
+  }
+
   // 960 px
   @if $breakpoint == tab-big {
     @media (max-width: 70em) {

@@ -18,8 +18,8 @@ export default defineComponent({
 
     const theme: GlobalThemeOverrides = {
       common: {
-        primaryColor: '#2FA9B1',
-        primaryColorHover: '#2FA9B1',
+        primaryColor: '#2fa9b1',
+        primaryColorHover: '#1d8890',
       },
     };
 
@@ -38,7 +38,7 @@ export default defineComponent({
 :root {
   // COLORS
   --color-primary: #2fa9b1;
-  --color-primary-dark: #2fa9b1;
+  --color-primary-dark: #1d8890;
   --color-light: #ffffff;
   --color-dark: #1f2225;
   --color-gray-dark: #868686;
@@ -76,6 +76,10 @@ html {
 .container {
   max-width: 120rem;
   margin: 0 auto;
+
+  @include respond(mobile) {
+    padding: 3rem;
+  }
 }
 
 .Vue-Toastification__toast--info.custom_toast {
@@ -105,5 +109,11 @@ html {
 
 a {
   text-decoration: none;
+}
+
+.secondary-heading {
+  font-size: 2.8rem;
+  margin-bottom: 2.4rem;
+
 }
 </style>
