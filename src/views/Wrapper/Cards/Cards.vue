@@ -45,4 +45,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./Cards.scss" />
+<style lang="scss" src="./Cards.scss" scoped />
