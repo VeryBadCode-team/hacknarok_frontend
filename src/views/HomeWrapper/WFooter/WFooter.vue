@@ -102,4 +102,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./Footer.scss" />
+<style lang="scss" src="./WFooter.scss" />

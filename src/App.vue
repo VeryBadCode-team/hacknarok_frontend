@@ -61,6 +61,8 @@ export default defineComponent({
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+
+  scroll-behavior: smooth;
 }
 
 // Global styles
@@ -76,10 +78,6 @@ html {
 .container {
   max-width: 120rem;
   margin: 0 auto;
-
-  @include respond(mobile) {
-    padding: 3rem;
-  }
 }
 
 .Vue-Toastification__toast--info.custom_toast {
@@ -114,6 +112,5 @@ a {
 .secondary-heading {
   font-size: 2.8rem;
   margin-bottom: 2.4rem;
-
 }
 </style>
