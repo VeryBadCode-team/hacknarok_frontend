@@ -114,4 +114,10 @@ a {
   font-size: 2.8rem;
   margin-bottom: 2.4rem;
 }
+
+.tertiary-heading {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
 </style>
