@@ -1,6 +1,10 @@
 .landing-page {
   height: 87vh;
 
+  @include respond(tab-small) {
+    margin-bottom: 8rem;
+  }
+
   &__wrapper {
     display: grid;
     grid-template-columns: 3fr 3fr;
@@ -74,8 +78,6 @@
 
     @include respond(tab-small) {
       order: 1;
-      width: 50%;
-      margin-top: 6rem;
     }
   }
 }

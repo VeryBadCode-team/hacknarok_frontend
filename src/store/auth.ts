@@ -30,7 +30,7 @@ export const useAuth = defineStore('auth', {
       } catch (err) {
         toastNotification(
           ToastType.ERROR,
-          'Invalid credentials. Please try again.',
+          'Błędne dane. Spróbuj ponownie.',
         );
       }
     },
@@ -46,31 +46,31 @@ export const useAuth = defineStore('auth', {
           this.login(newPayload);
         }
       } catch (err) {
-        toastNotification(ToastType.ERROR, 'Something is wrong');
+        toastNotification(ToastType.ERROR, 'Rejestracja nie powiodła się.');
       }
     },
     async changeEmail(payload: UpdateUserPayload): Promise<void> {
       try {
         await AuthService.changeEmail(payload);
-        toastNotification(ToastType.SUCCESS, 'Email changed succesfully.');
+        toastNotification(ToastType.SUCCESS, 'Email zmieniony pomyślnie.');
       } catch (err) {
-        toastNotification(ToastType.ERROR, 'Email cannot be changed');
+        toastNotification(ToastType.ERROR, 'Błąd! Email nie został zmieniony.');
       }
     },
     async changePassword(payload: UpdateUserPayload): Promise<void> {
       try {
         await AuthService.changePassword(payload);
-        toastNotification(ToastType.SUCCESS, 'Password changed succesfully.');
+        toastNotification(ToastType.SUCCESS, 'Hasło zmienione pomyślnie.');
       } catch (err) {
-        toastNotification(ToastType.ERROR, 'Password cannot be changed');
+        toastNotification(ToastType.ERROR, 'Błąd! Hasło nie zostało zmienione.');
       }
     },
     async update(payload: UserPayload): Promise<void> {
       try {
         await AuthService.update(payload);
-        toastNotification(ToastType.SUCCESS, 'Avatar updated succesfully.');
+        toastNotification(ToastType.SUCCESS, 'Avatar zmieniony pomyślnie.');
       } catch (err) {
-        toastNotification(ToastType.ERROR, 'User cannot be updated');
+        toastNotification(ToastType.ERROR, 'Błąd! Avatar nie został zmieniony.');
       }
     },
     logout(): void {

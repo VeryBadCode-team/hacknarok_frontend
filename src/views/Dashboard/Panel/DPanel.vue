@@ -74,7 +74,7 @@ import {
 } from 'naive-ui';
 
 export default defineComponent({
-  name: 'DPanel',
+  name: 'EditBusStopConnectionView',
   components: {
     LMap,
     LTileLayer,

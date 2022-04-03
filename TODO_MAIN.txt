@@ -1,8 +1,6 @@
 // HACKNAROK FRONTEDN TODO
 
-- change favicon and title
-- jak zacząc copywriting
 - lanidng page ozdoby
 - zmina tekstu na PL w signin i singup
 - wyrzucic libke z ikonami
-- rename panel na dpanel i main na dmain
+- poprawić cardsy !

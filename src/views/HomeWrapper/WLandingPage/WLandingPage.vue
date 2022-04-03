@@ -8,7 +8,10 @@
           twarze oraz będziesz miał okazje robić to wszystko przy okazji
           ciekawych aktywości
         </n-p>
-        <n-button type="primary">Zorganizuj Spotkanie</n-button>
+
+        <n-button type="primary" @click="handleBtnClick"
+          >Zorganizuj spotkanie</n-button
+        >
       </div>
 
       <img
@@ -23,6 +26,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { NH1, NP, NButton } from 'naive-ui';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -30,7 +34,14 @@ export default defineComponent({
     NP,
     NButton,
   },
+  setup() {
+    const router = useRouter();
+
+    const handleBtnClick = () => router.push('/login');
+
+    return { handleBtnClick };
+  },
 });
 </script>
 
-<style lang="scss" src="./LandingPage.scss" />
+<style lang="scss" src="./WLandingPage.scss" />

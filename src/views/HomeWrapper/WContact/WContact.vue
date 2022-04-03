@@ -1,5 +1,5 @@
 <template>
-  <div class="container contact">
+  <div id="contact" class="container contact">
     <n-h2 class="secondary-heading">Napisz do nas</n-h2>
     <n-form class="contact__form">
       <n-form-item class="name" label="Imię">
@@ -40,4 +40,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./Contact.scss" />
+<style lang="scss" src="./WContact.scss" />

@@ -62,6 +62,7 @@ export default defineComponent({
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+<<<<<<< HEAD
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;
 
@@ -72,6 +73,10 @@ html {
   &::-webkit-scrollbar-thumb {
     border: 5px solid var(--color-primary);
   }
+=======
+
+  scroll-behavior: smooth;
+>>>>>>> origin/master
 }
 
 // Global styles
@@ -87,10 +92,6 @@ html {
 .container {
   max-width: 120rem;
   margin: 0 auto;
-
-  @include respond(mobile) {
-    padding: 3rem;
-  }
 }
 
 .Vue-Toastification__toast--info.custom_toast {
@@ -125,5 +126,14 @@ a {
 .secondary-heading {
   font-size: 2.8rem;
   margin-bottom: 2.4rem;
+<<<<<<< HEAD
+=======
+}
+
+.tertiary-heading {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+>>>>>>> origin/master
 }
 </style>

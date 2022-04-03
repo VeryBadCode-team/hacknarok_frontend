@@ -46,7 +46,6 @@
         <address class="contacts">
           <p class="contacts__address">Mickiewicza 8, 33-100 Tarnów</p>
           <p>
-            <a class="footer-link" href="tel:123-456-789">123-456-789</a><br />
             <a class="footer-link" href="mailto:hello@omnifood.com"
               >verybadcode@business.com</a
             >
@@ -59,6 +58,7 @@
         <ul class="footer-nav">
           <li><a class="footer-link" href="#">Zarejestruj się</a></li>
           <li><a class="footer-link" href="#">Zaloguj się</a></li>
+          <li><a class="footer-link" href="#">Pomoc</a></li>
         </ul>
       </nav>
 
@@ -71,13 +71,6 @@
         </ul>
       </nav>
 
-      <nav class="nav-col">
-        <p class="footer-heading">Przydatne linki</p>
-        <ul class="footer-nav">
-          <li><a class="footer-link" href="#">Pomoc</a></li>
-          <li><a class="footer-link" href="#">Polityka prywatności</a></li>
-        </ul>
-      </nav>
       <p class="copyright">
         Copyright &copy; <span class="year">2022</span> by VeryBadCode All
         rights reserved.
@@ -102,4 +95,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./Footer.scss" />
+<style lang="scss" src="./WFooter.scss" />
