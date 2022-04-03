@@ -1,12 +1,12 @@
 <template>
   <div class="sign-in">
     <n-form :model="model" :rules="rules" ref="formRef" class="sign-in__form">
-      <n-h1>Welcome in JoinMe</n-h1>
-      <n-h2>Sign in to continue</n-h2>
+      <n-h1>Witaj w JoinMe</n-h1>
+      <n-h2>Zaloguj się aby kontnuować</n-h2>
       <n-form-item path="email" label="Email">
         <n-input type="text" placeholder="" v-model:value="model.email" />
       </n-form-item>
-      <n-form-item path="password" label="Password">
+      <n-form-item path="password" label="Hasło">
         <n-input
           type="password"
           placeholder=""
@@ -14,21 +14,21 @@
         />
       </n-form-item>
       <div class="sign-in__more">
-        <n-checkbox>Remember Me</n-checkbox>
-        <n-p>Forgot Password?</n-p>
+        <n-checkbox>Zapamiętaj mnie</n-checkbox>
+        <n-p>Zapomniałeś hasła?</n-p>
       </div>
       <div class="sign-in__buttons">
-        <n-button type="primary" @click="handleSignIn"> Sign In </n-button>
+        <n-button type="primary" @click="handleSignIn"> Zaloguj się </n-button>
         <n-p>
-          <span> Don't have an account? </span>
-          <router-link to="/signup">Sign Up</router-link></n-p
+          <span> Nie masz jeszcze konta? </span>
+          <router-link to="/signup">Zarejestruj się</router-link></n-p
         >
       </div>
     </n-form>
     <div class="sign-in__footer">
-      <n-p>Terms of Service</n-p>
-      <n-p>Contact Support</n-p>
-      <n-p>&copy; Hejka 2022</n-p>
+      <n-p>Warunki użytkowania</n-p>
+      <n-p>Pomoc techniczna</n-p>
+      <n-p>&copy; JoinMe 2022</n-p>
     </div>
   </div>
 </template>
