@@ -6,15 +6,12 @@
       <!-- STEP 01 -->
       <div class="how-to-start__step-text-box">
         <n-p class="how-to-start__step-number">01</n-p>
-        <n-h3 class="tertiary-heading"
-          >Tell us what you like (and what not)</n-h3
+        <n-h3 class="tertiary-heading">Intuicyjny interfejs</n-h3>
+        <n-p class="how-to-start__step-description"
+          >Dzięki JoinMe łatwo znajdziesz interesujące cię spotkania i
+          wydarzenia w twoim mieście, które pozwolą Ci nawiązać nowe znajomości,
+          a także umacniać trwające przyjaźnie.</n-p
         >
-        <n-p class="how-to-start__step-description">
-          Never again waste time thinking about what to eat! Omnifood AI will
-          create a 100% personalized weekly meal plan just for you. It makes
-          sure you get all the nutrients and vitamins you need, no matter what
-          diet you follow!
-        </n-p>
       </div>
       <div class="how-to-start__step-img-box">
         <img
@@ -35,22 +32,23 @@
       </div>
       <div class="how-to-start__step-text-box">
         <n-p class="how-to-start__step-number">02</n-p>
-        <n-h3 class="tertiary-heading">Approve your weekly meal plan</n-h3>
+        <n-h3 class="tertiary-heading">Nieoceniona prostota i szybkość</n-h3>
         <n-p class="how-to-start__step-description">
-          Once per week, approve the meal plan generated for you by Omnifood AI.
-          You can change ingredients, swap entire meals, or even add your own
-          recipes.
+          Nigdy więcej nie marnuj swojego cennego czasu na samodzielną i
+          uciążliwą organizację spotkań. Z JoinMe zorganizujesz spotkanie w
+          wybranej lokalizacji w 5 minut!
         </n-p>
       </div>
 
       <!-- STEP 03 -->
       <div class="how-to-start__step-text-box">
         <n-p class="how-to-start__step-number">03</n-p>
-        <n-h3 class="tertiary-heading">Receive meals at convenient time</n-h3>
+        <n-h3 class="tertiary-heading"
+          >Wszystkie informacje w zasięgu ręki</n-h3
+        >
         <n-p class="how-to-start__step-description">
-          Best chefs in town will cook your selected meal every day, and we will
-          deliver it to your door whenever works best for you. You can change
-          delivery schedule and address daily!
+          Na stronie danego wydarzenia znajdziesz najpotrzebniejsze informacje
+          oraz będziesz mógł ustalić szczegóły z pozostałymi uczestnikami.
         </n-p>
       </div>
       <div class="how-to-start__step-img-box">
