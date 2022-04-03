@@ -35,20 +35,20 @@ import { defineComponent, onBeforeMount, ref } from 'vue';
 import 'leaflet/dist/leaflet.css';
 // @ts-ignore
 // eslint-disable-next-line
-const {
-  LMap,
-  LTileLayer,
-  LMarker,
-  LPopup,
-  LControlLayers,
-} = require('@vue-leaflet');
-// import {
+// const {
 //   LMap,
 //   LTileLayer,
 //   LMarker,
 //   LPopup,
 //   LControlLayers,
-// } from '@vue-leaflet/vue-leaflet';
+// } = require('@vue-leaflet');
+import {
+  LMap,
+  LTileLayer,
+  LMarker,
+  LPopup,
+  LControlLayers,
+} from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import DCards from './DCards/DCards.vue';
 import MeetingService from '@/service/meeting/meeting.service';
@@ -66,7 +66,6 @@ export default defineComponent({
   },
   setup() {
     const meetings = ref<Meeting[]>([]);
-    // unused var
     const isLoading = ref(false);
 
     const map = ref({
