@@ -7,7 +7,7 @@
             <img
               class="logo__image"
               alt="Omnifood logo"
-              src="src\assets\images\logo.svg"
+              src="@/assets/images/logo.svg"
             />
             <p class="logo__name">JoinMe</p>
           </a>

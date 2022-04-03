@@ -38,7 +38,8 @@ export default defineComponent({
 :root {
   // COLORS
   --color-primary: #2fa9b1;
-  --color-primary-dark: #1d8890;
+  --color-primary-dark: #2fa9b1;
+  --color-primary-light: #ecf5f6;
   --color-light: #ffffff;
   --color-dark: #1f2225;
   --color-gray-dark: #868686;
