@@ -33,29 +33,21 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, ref } from 'vue';
 import 'leaflet/dist/leaflet.css';
-// @ts-ignore
-// eslint-disable-next-line
-const {
+import {
   LMap,
   LTileLayer,
   LMarker,
   LPopup,
   LControlLayers,
-} = require('@vue-leaflet');
-// import {
-//   LMap,
-//   LTileLayer,
-//   LMarker,
-//   LPopup,
-//   LControlLayers,
-// } from '@vue-leaflet/vue-leaflet';
+// @ts-ignore
+} from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import DCards from './DCards/DCards.vue';
 import MeetingService from '@/service/meeting/meeting.service';
 import { Meeting } from '@/types';
 
 export default defineComponent({
-  name: 'DPanel',
+  name: 'EditBusStopConnectionView',
   components: {
     DCards,
     LMap,
