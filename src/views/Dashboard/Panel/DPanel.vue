@@ -56,6 +56,7 @@ import {
   LMarker,
   LPopup,
   LTileLayer,
+// @ts-ignore
 } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import MeetingService from '@/service/meeting/meeting.service';
@@ -98,7 +99,7 @@ export default defineComponent({
       if (meeting.category) {
         return icon({
           iconUrl: `https://hacknarok-api.verybadcode.pl/api/drive/uploads/${
-            meeting.category ?? meeting.category.name
+            meeting.category.imageId
           }`,
           iconSize: [40, 40],
         });

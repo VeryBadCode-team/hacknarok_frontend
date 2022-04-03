@@ -21,6 +21,10 @@ class MeetingService {
   joinEvent(id:string) {
     return instance.post(`api/joinme/event/${id}/join`);
   }
+
+  sendMessage(id:string, message:string) {
+    return instance.post(`api/joinme/event/comments`, {id, message});
+  }
 }
 
 export default new MeetingService();
