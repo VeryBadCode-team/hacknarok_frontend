@@ -1,9 +1,54 @@
 .landing-page {
   height: 87vh;
+  position: relative;
 
   @include respond(tab-small) {
     margin-bottom: 8rem;
   }
+
+  &__ornament-blob {
+    position: absolute;
+    top: 50rem;
+    left: 20rem;
+    height: 5rem;
+    path {
+      fill: var(--color-primary);
+      opacity: 0.3;
+    }
+  }
+  &__ornament-blob-2 {
+    position: absolute;
+    top: 260rem;
+    left: 90rem;
+    height: 5rem;
+    path {
+      fill: var(--color-primary);
+      opacity: 0.3;
+    }
+  }
+  &__ornament-blob-3 {
+    position: absolute;
+    top: 140rem;
+    left: 90rem;
+    height: 5rem;
+    path {
+      fill: var(--color-primary);
+      opacity: 0.3;
+    }
+  }
+  &__ornament-leaf {
+    position: absolute;
+    top: 230rem;
+    left: 2rem;
+    height: 5rem;
+    path {
+      fill: var(--color-primary);
+      opacity: 0.3;
+    }
+  }
+  // &__ornament-flafi {
+  //   position: absolute;
+  // }
 
   &__wrapper {
     display: grid;
