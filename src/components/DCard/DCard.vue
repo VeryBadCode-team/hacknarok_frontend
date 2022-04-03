@@ -35,7 +35,7 @@
     </div>
     <div class="card__body">
       <div class="card__headline">
-        <n-h3>{{ meeting.eventName }}</n-h3>
+        <n-h3>{{ meeting.eventName ?? meeting.category?.name ?? '---' }}</n-h3>
         <div class="pin">
           <img :src="getImageSrc()" class="card__badge" alt="running"/>
         </div>
