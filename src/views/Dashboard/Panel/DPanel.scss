@@ -21,5 +21,9 @@
   &__map {
     border-radius: 1rem;
     overflow: hidden;
+
+    @include respond(tab-medium) {
+      display: none;
+    }
   }
 }

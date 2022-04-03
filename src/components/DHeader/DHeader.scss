@@ -40,6 +40,10 @@
     display: flex;
     gap: 2rem;
 
+    @include respond(tab-small) {
+      display: none;
+    }
+
     & > * {
       cursor: pointer;
     }
