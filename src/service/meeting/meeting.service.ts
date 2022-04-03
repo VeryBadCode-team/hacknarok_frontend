@@ -17,6 +17,10 @@ class MeetingService {
   createMeeting(payload:CreateMeetingRequest) {
     return instance.put('api/joinme/events', payload);
   }
+
+  joinEvent(id:string) {
+    return instance.post(`api/joinme/event/${id}/join`);
+  }
 }
 
 export default new MeetingService();

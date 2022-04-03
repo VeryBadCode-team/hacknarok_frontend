@@ -25,6 +25,19 @@
     }
   }
 
+  &__leave {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+    .n-button {
+      &:hover {
+        background-color: var(--color-light);
+        color: var(--color-dark);
+      }
+    }
+  }
+
   &__desc {
     display: flex;
     flex-direction: column;

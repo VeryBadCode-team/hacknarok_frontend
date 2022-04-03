@@ -26,7 +26,7 @@ const routes = [
     children: [
       { path: '/dashboard', component: DPanel, meta: { requiresAuth: true } },
       {
-        path: '/dashboard/details',
+        path: '/dashboard/details/:id',
         component: DDetails,
         meta: { requiresAuth: true },
       },

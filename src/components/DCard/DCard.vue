@@ -48,7 +48,7 @@
           >{{ meeting.maxUsers - meeting.userLeft }}/{{ meeting.maxUsers }}</n-p
         >
       </div>
-      <router-link to="/dashboard/details">
+      <router-link :to="`/dashboard/details/${meeting.id}`">
         <n-button type="primary">Dołącz</n-button>
       </router-link>
     </div>

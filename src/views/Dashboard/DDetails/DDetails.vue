@@ -7,9 +7,13 @@
           alt="header"
         />
       </div>
-      <div class="details__join">
-        <n-h1>{{ eventDetails?.category.name }}</n-h1>
+      <div v-if="!joined" class="details__join">
+        <n-h1>{{ eventDetails?.eventName ?? eventDetails?.category.name }}</n-h1>
         <n-button type="primary" @click="joinEvent"> Dołącz teraz </n-button>
+      </div>
+      <div v-if="joined" class="details__leave">
+        <n-h1>{{ eventDetails?.eventName ?? eventDetails?.category.name }}</n-h1>
+        <n-button type="primary"> Zrezygnuj z wypadu </n-button>
       </div>
       <div class="details__desc">
         <n-p> {{ eventDetails?.description }}</n-p>
@@ -51,6 +55,7 @@ import { NH1, NButton, NP, NAvatar } from 'naive-ui';
 import MeetingService from '@/service/meeting/meeting.service';
 import { MeetingDetails } from '@/types';
 import { useMeeting } from '@/store/meeting';
+import {useRoute} from "vue-router";
 
 export default defineComponent({
   components: {
@@ -62,17 +67,24 @@ export default defineComponent({
   setup() {
     const meeting = useMeeting();
     const eventDetails = ref<MeetingDetails>();
+    const joined = ref(false);
 
     const fetchData = () => {
-      MeetingService.getEventDetails(meeting.meeting.id).then((response) => {
+      // @ts-ignore
+      MeetingService.getEventDetails(useRoute().params.id).then((response) => {
         console.log(response.data);
         eventDetails.value = response.data;
       });
     };
 
-    const joinEvent = () => {};
+    const joinEvent = () => {
+      MeetingService.joinEvent(meeting.meeting.id).then((response) => {
+        console.log(response);
+        joined.value = true;
+      });
+    };
 
-    return { fetchData, joinEvent, eventDetails };
+    return { fetchData, joinEvent, eventDetails, joined };
   },
 
   beforeMount() {
