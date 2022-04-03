@@ -48,8 +48,8 @@
           >{{ meeting.maxUsers - meeting.userLeft }}/{{ meeting.maxUsers }}</n-p
         >
       </div>
-      <router-link to="/dashboard/details">
-        <n-button type="primary" @click="setDetails">Dołącz</n-button>
+      <router-link :to="`/dashboard/details/${meeting.id}`">
+        <n-button type="primary">Dołącz</n-button>
       </router-link>
     </div>
   </div>
@@ -59,7 +59,6 @@
 import { defineComponent, onBeforeMount, PropType, ref } from 'vue';
 import { NAvatar, NButton, NH3, NP } from 'naive-ui';
 import { Coords, Meeting } from '@/types';
-import { useMeeting } from '@/store/meeting';
 
 export default defineComponent({
   components: {
@@ -75,8 +74,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const meeting = useMeeting();
-
     const coords = ref<Coords>({
       lng: 0,
       lat: 0,
@@ -124,13 +121,9 @@ export default defineComponent({
       return null;
     };
 
-    const setDetails = () => {
-      meeting.saveMeeting(props.meeting);
-    };
-
     onBeforeMount(() => getLocation());
 
-    return { coords, getDistance, getImageSrc, stars, emptyStars, setDetails };
+    return { coords, getDistance, getImageSrc, stars, emptyStars };
   },
 });
 </script>

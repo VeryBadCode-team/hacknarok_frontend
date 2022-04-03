@@ -7,9 +7,17 @@
           alt="header"
         />
       </div>
-      <div class="details__join">
-        <n-h1>{{ eventDetails?.category.name }}</n-h1>
+      <div v-if="!joined" class="details__join">
+        <n-h1>{{
+          eventDetails?.eventName ?? eventDetails?.category.name
+        }}</n-h1>
         <n-button type="primary" @click="joinEvent"> Dołącz teraz </n-button>
+      </div>
+      <div v-if="joined" class="details__leave">
+        <n-h1>{{
+          eventDetails?.eventName ?? eventDetails?.category.name
+        }}</n-h1>
+        <n-button type="primary"> Zrezygnuj z wypadu </n-button>
       </div>
       <div class="details__desc">
         <n-p> {{ eventDetails?.description }}</n-p>
@@ -51,6 +59,7 @@ import { NH1, NButton, NP, NAvatar } from 'naive-ui';
 import MeetingService from '@/service/meeting/meeting.service';
 import { MeetingDetails } from '@/types';
 import { useMeeting } from '@/store/meeting';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -60,23 +69,24 @@ export default defineComponent({
     NAvatar,
   },
   setup() {
-    const meeting = useMeeting();
     const eventDetails = ref<MeetingDetails>();
+    const joined = ref(false);
 
-    console.log(eventDetails.value);
-
-    const fetchData = async () => {
-      await MeetingService.getEventDetails(meeting.meeting.id).then(
-        (response) => {
-          console.log(response.data);
-          eventDetails.value = response.data;
-        },
-      );
+    const fetchData = () => {
+      // @ts-ignore
+      MeetingService.getEventDetails(useRoute().params.id).then((response) => {
+        eventDetails.value = response.data;
+      });
     };
 
-    const joinEvent = () => {};
+    const joinEvent = () => {
+      // @ts-ignore
+      MeetingService.joinEvent(useRoute().params.id).then((response) => {
+        joined.value = true;
+      });
+    };
 
-    return { fetchData, joinEvent, eventDetails };
+    return { fetchData, joinEvent, eventDetails, joined };
   },
 
   beforeMount() {
