@@ -4,9 +4,9 @@
       <div class="card__profile">
         <n-avatar
           size="large"
-          src="https://bi.im-g.pl/im/15/b7/15/z22769941AMP,Shrek.jpg"
+          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.author.avatarId}`"
         />
-        <n-p class="card__name">Joanna</n-p>
+        <n-p class="card__name">{{ meeting.author.firstName }}</n-p>
         <div class="card__stars">
           <div class="card__icon">
             <img src="@/assets/images/icons/star.svg" alt="star" />
@@ -35,7 +35,7 @@
     </div>
     <div class="card__body">
       <div class="card__headline">
-        <n-h3>Bieganie w parku</n-h3>
+        <n-h3>{{ meeting.eventName }}</n-h3>
         <div class="pin">
           <img src="@/assets/images/icons/running.svg" alt="running" />
         </div>
@@ -49,7 +49,7 @@
           src="@/assets/images/icons/person.svg"
           alt="Users account"
         />
-        <n-p class="people-counter__number">1/2</n-p>
+        <n-p class="people-counter__number">1/{{ meeting.maxUsers }}</n-p>
       </div>
       <n-button type="primary">Dołącz</n-button>
     </div>
@@ -57,9 +57,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, onBeforeMount, PropType, ref } from 'vue';
 import { NP, NAvatar, NH3, NButton } from 'naive-ui';
-import { Meeting } from '@/types';
+import { Cords, Meeting } from '@/types';
 
 export default defineComponent({
   components: {
@@ -70,12 +70,36 @@ export default defineComponent({
   },
   props: {
     meeting: {
-      // type: Object as PropType<Meeting>,
-      // required: true,
+      type: Object as PropType<Meeting>,
+      required: true,
     },
   },
-  setup() {
-    return {};
+  setup(props) {
+    const cords = ref<Cords>({
+      lang: 0,
+      lat: 0,
+    });
+
+    const getLocation = (): Cords | null => {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const crds = pos.coords;
+
+          cords.value = {
+            lat: crds.latitude,
+            lang: crds.longitude,
+          };
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+      return null;
+    };
+
+    onBeforeMount(() => getLocation());
+
+    return { cords };
   },
 });
 </script>

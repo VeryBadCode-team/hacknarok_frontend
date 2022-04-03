@@ -12,9 +12,17 @@ export enum ToastType {
   INFO = 'info',
 }
 
+interface Author {
+  avatarId: string;
+  firstName: string;
+  lastName: string;
+  id: string;
+  rate: number;
+}
+
 export interface Meeting {
   id: string;
-  authorId: string;
+  author: Author;
   authorType: string;
   lat: number;
   lng: number;
@@ -24,4 +32,9 @@ export interface Meeting {
   updatedAt: number;
   eventName: string;
   imageId: string;
+}
+
+export interface Cords {
+  lang: number;
+  lat: number;
 }

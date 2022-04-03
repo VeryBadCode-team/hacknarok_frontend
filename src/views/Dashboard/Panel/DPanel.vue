@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="dashboard__cards">
-      <d-cards></d-cards>
+      <d-card v-for="meeting in meetings" :meeting="meeting"></d-card>
     </div>
     <div class="dashboard__map">
       <l-map ref="map" :zoom="11" :max-zoom="map.maxZoom" :center="map.center">
@@ -50,19 +50,19 @@ import {
   LControlLayers,
 } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
-import DCards from './DCards/DCards.vue';
 import MeetingService from '@/service/meeting/meeting.service';
 import { Meeting } from '@/types';
+import DCard from '@/components/DCard/DCard.vue';
 
 export default defineComponent({
   name: 'DPanel',
   components: {
-    DCards,
     LMap,
     LTileLayer,
     LMarker,
     LPopup,
     LControlLayers,
+    DCard,
   },
   setup() {
     const meetings = ref<Meeting[]>([]);
@@ -85,7 +85,6 @@ export default defineComponent({
     const fetchData = () => {
       MeetingService.getAllEvents().then((response) => {
         meetings.value = response.data;
-        alert('loaded markers');
       });
     };
 
