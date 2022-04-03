@@ -3,13 +3,10 @@
     <div class="card__header">
       <div class="card__profile">
         <n-avatar
-<<<<<<< Updated upstream
-            size="large"
-            :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.imageId ?? meeting.author.avatarId}`"
-=======
           size="large"
-          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.author.avatarId}`"
->>>>>>> Stashed changes
+          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${
+            meeting.imageId ?? meeting.author.avatarId
+          }`"
         />
         <n-p class="card__name">{{ meeting.author.firstName }}</n-p>
         <div class="card__stars">
