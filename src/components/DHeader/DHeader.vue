@@ -22,6 +22,27 @@
         <div class="header__name">
           <n-p>{{ user.firstName }} {{ user.lastName }}</n-p>
         </div>
+        <div class="header__dropdown-btn" @click="toggleDropdown">
+          <img
+            src="@/assets/images/icons/chevron-down-outline.svg"
+            alt="arrow down"
+          />
+        </div>
+        <div class="header__toggle-dropdown" :class="{ hidden: isOpen }">
+          <div class="header__dropdown-options">
+            <n-p class="option email">
+              <strong>
+                {{ user.email }}
+              </strong>
+            </n-p>
+            <n-p class="option">ustawienia konta</n-p>
+            <n-p class="option">zmień hasło</n-p>
+            <n-p class="option">pomoc</n-p>
+            <n-button type="primary" @click="handleLogout"
+              >Wyloguj się</n-button
+            >
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -29,7 +50,7 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeMount, computed, ref } from 'vue';
-import { NP, NAvatar } from 'naive-ui';
+import { NP, NAvatar, NButton } from 'naive-ui';
 import { useFile } from '@/store/file';
 import { useAuth } from '@/store/auth';
 
@@ -37,10 +58,14 @@ export default defineComponent({
   components: {
     NP,
     NAvatar,
+    NButton,
   },
   setup() {
     const file = useFile();
     const auth = useAuth();
+
+    const isOpen = ref(true);
+    const isRotated = ref(false);
 
     const avatarSrc = computed(() =>
       auth.user?.avatar?.id
@@ -49,6 +74,14 @@ export default defineComponent({
     );
 
     const { user } = auth;
+
+    const toggleDropdown = () => {
+      isOpen.value = !isOpen.value;
+    };
+
+    const rotateArrow = () => {
+      isRotated.value = !isRotated.value;
+    };
 
     const handleChangeAvatar = async (e: any) => {
       const formData = new FormData();
@@ -59,9 +92,16 @@ export default defineComponent({
 
     onBeforeMount(() => {});
 
+    const handleLogout = () => auth.logout();
+
     return {
       user,
+      isOpen,
+      isRotated,
       avatarSrc,
+      handleLogout,
+      toggleDropdown,
+      rotateArrow,
       handleChangeAvatar,
     };
   },
