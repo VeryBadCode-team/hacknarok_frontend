@@ -2,7 +2,7 @@
   <div class="sign-up">
     <n-form ref="formRef" :model="model" :rules="rules" class="sign-up__form">
       <n-h1>Nie masz jeszcze konta?</n-h1>
-      <n-h2>Dołącz do naszej społeczności wypełniając formularz</n-h2>
+      <n-h2>Dołącz do naszej społeczności</n-h2>
       <n-form-item path="name" label="Imię i nazwisko">
         <n-input
           type="text"
