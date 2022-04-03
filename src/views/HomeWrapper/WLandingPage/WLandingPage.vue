@@ -65,7 +65,7 @@
         <n-p class="description">
           Dzięki naszej aplikacji zoorganizujesz własne wydarzenia, poznasz nowe
           twarze oraz będziesz miał okazje robić to wszystko przy okazji
-          ciekawych aktywości
+          ciekawych aktywności
         </n-p>
 
         <n-button type="primary" @click="handleBtnClick"
