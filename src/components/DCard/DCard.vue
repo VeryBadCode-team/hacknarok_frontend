@@ -59,6 +59,7 @@
 import { defineComponent, onBeforeMount, PropType, ref } from 'vue';
 import { NAvatar, NButton, NH3, NP } from 'naive-ui';
 import { Coords, Meeting } from '@/types';
+import { useMeeting } from '@/store/meeting';
 
 export default defineComponent({
   components: {
@@ -74,6 +75,11 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const meeting = useMeeting();
+    console.log('seima');
+
+    meeting.saveMeeting(props.meeting);
+
     const coords = ref<Coords>({
       lng: 0,
       lat: 0,
