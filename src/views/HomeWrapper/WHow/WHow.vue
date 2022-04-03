@@ -18,18 +18,17 @@
       </div>
       <div class="how-to-start__step-img-box">
         <img
-          src=""
+          src="@/assets/images/dashboard.jpg"
           class="how-to-start__step-img"
-          alt="iPhone app
-            preferences selection screen"
+          alt="main dashboard screen"
         />
       </div>
 
       <!-- STEP 02 -->
       <div class="how-to-start__step-img-box">
         <img
-          src=""
-          class="how-to-start__step-img"
+          src="@/assets/images/create-event.jpg"
+          class="how-to-start__step-img custom"
           alt="iPhone app
             meal approving plan screen"
         />

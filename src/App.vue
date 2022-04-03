@@ -120,7 +120,7 @@ a {
 
 .secondary-heading {
   font-size: 2.8rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 4rem;
 }
 
 .tertiary-heading {
