@@ -26,7 +26,7 @@ export const useAuth = defineStore('auth', {
           await AuthService.login(payload);
         this.user = response.data;
         localStorage.setItem('currentUser', JSON.stringify(this.user));
-        router.push('/authenticated');
+        router.push('/dashboard');
       } catch (err) {
         toastNotification(
           ToastType.ERROR,
