@@ -21,13 +21,13 @@ interface Author {
 }
 
 export interface CreateMeetingRequest {
-  name: string,
-  categoryId: string,
-  description: string,
-  maxUsers: number,
-  type: string,
-  lat: number|undefined,
-  lng: number|undefined,
+  name: string;
+  categoryId: string;
+  description: string;
+  maxUsers: number;
+  type: string;
+  lat: number | undefined;
+  lng: number | undefined;
 }
 
 export interface Meeting {
@@ -61,6 +61,7 @@ export interface MeetingDetails {
   authorType: string;
   description: string;
   isHighlighted: boolean;
+  backgroundId: string;
   lat: number;
   lng: number;
   maxUsers: number;
@@ -71,7 +72,6 @@ export interface MeetingDetails {
   imageId: string;
   category: MeetingCategory;
 }
-
 
 export interface MeetingCategory {
   id: string;
