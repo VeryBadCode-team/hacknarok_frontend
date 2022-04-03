@@ -46,7 +46,7 @@
       <div class="people-counter">
         <img
           class="people-counter__icon"
-          src="src\assets\images\icons\person.svg"
+          src="@/assets/images/icons/person.svg"
           alt="Users account"
         />
         <n-p class="people-counter__number">1/2</n-p>
@@ -70,8 +70,8 @@ export default defineComponent({
   },
   props: {
     meeting: {
-      type: Object as PropType<Meeting>,
-      required: true,
+      // type: Object as PropType<Meeting>,
+      // required: true,
     },
   },
   setup() {

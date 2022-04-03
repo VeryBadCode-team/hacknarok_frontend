@@ -1,4 +1,3 @@
-<!-- @ts-ignore -->
 <template>
   <div class="dashboard">
     <div class="dashboard__cards">
@@ -17,14 +16,14 @@
           :icon="runningIcon"
         >
           <l-popup>
-            <div class="marker-popup">
-              <div class="marker-popup__title">
+            <!-- <div class="marker-popup"> -->
+            <!-- <div class="marker-popup__title">
                 <span>{{ marker.title }}</span>
               </div>
               <div class="marker-popup__content">
                 <span>{{ marker.content }}</span>
-              </div>
-            </div>
+              </div> -->
+            <!-- </div> -->
           </l-popup>
         </l-marker>
       </l-map>
@@ -34,13 +33,22 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, ref } from 'vue';
 import 'leaflet/dist/leaflet.css';
-import {
+// @ts-ignore
+// eslint-disable-next-line
+const {
   LMap,
   LTileLayer,
   LMarker,
   LPopup,
   LControlLayers,
-} from '@vue-leaflet/vue-leaflet';
+} = require('@vue-leaflet');
+// import {
+//   LMap,
+//   LTileLayer,
+//   LMarker,
+//   LPopup,
+//   LControlLayers,
+// } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import DCards from './DCards/DCards.vue';
 import MeetingService from '@/service/meeting/meeting.service';
