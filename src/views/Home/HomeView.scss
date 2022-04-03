@@ -3,6 +3,10 @@
     padding: 0 6rem;
   }
 
+  @include respond(tab-small) {
+    padding: 0 3rem;
+  }
+
   min-height: 100vh;
 
   display: flex;
