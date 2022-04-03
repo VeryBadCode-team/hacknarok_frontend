@@ -61,7 +61,7 @@
     /> -->
     <div class="landing-page__wrapper">
       <div class="landing-page__text">
-        <n-h1>Juz dziś spotkajmy się w nowej rzeczywistości </n-h1>
+        <n-h1>Już dziś spotkajmy się w nowej rzeczywistości </n-h1>
         <n-p class="description">
           Dzięki naszej aplikacji zoorganizujesz własne wydarzenia, poznasz nowe
           twarze oraz będziesz miał okazje robić to wszystko przy okazji
