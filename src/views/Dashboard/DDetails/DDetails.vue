@@ -3,21 +3,23 @@
     <div class="details__head">
       <div class="details__header">
         <img
-          src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-          alt="header"
+            src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            alt="header"
         />
       </div>
       <div v-if="!joined" class="details__join">
         <n-h1>{{
-          eventDetails?.eventName ?? eventDetails?.category.name
-        }}</n-h1>
-        <n-button type="primary" @click="joinEvent"> Dołącz teraz </n-button>
+            eventDetails?.eventName ?? eventDetails?.category.name
+          }}
+        </n-h1>
+        <n-button type="primary" @click="joinEvent"> Dołącz teraz</n-button>
       </div>
       <div v-if="joined" class="details__leave">
         <n-h1>{{
-          eventDetails?.eventName ?? eventDetails?.category.name
-        }}</n-h1>
-        <n-button type="primary"> Zrezygnuj z wypadu </n-button>
+            eventDetails?.eventName ?? eventDetails?.category.name
+          }}
+        </n-h1>
+        <n-button type="primary"> Zrezygnuj z wypadu</n-button>
       </div>
       <div class="details__desc">
         <n-p> {{ eventDetails?.description }}</n-p>
@@ -27,8 +29,8 @@
           <n-p>Organizator</n-p>
           <div class="organizator">
             <n-avatar
-              size="large"
-              :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${eventDetails.author.avatarId}`"
+                size="large"
+                :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${eventDetails?.author.avatarId}`"
             />
             <div>
               <p>
@@ -50,16 +52,27 @@
         </div>
       </div>
     </div>
+    <div class="chat">
+      <div class="chat__input">
+        <input v-model="message" type="text" placeholder="Napisz wiadomość"/>
+        <button @click="sendMessage">Wyślij</button>
+      </div>
+      <div class="chat__list">
+        <div v-if="eventDetails?.comments != null" v-for="(message, index) in eventDetails?.comments">
+          {{ message }}
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { NH1, NButton, NP, NAvatar } from 'naive-ui';
+import {defineComponent, ref} from 'vue';
+import {NAvatar, NButton, NH1, NP} from 'naive-ui';
 import MeetingService from '@/service/meeting/meeting.service';
-import { MeetingDetails } from '@/types';
-import { useMeeting } from '@/store/meeting';
-import { useRoute } from 'vue-router';
+import {MeetingDetails} from '@/types';
+import {useRoute} from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -69,6 +82,7 @@ export default defineComponent({
     NAvatar,
   },
   setup() {
+    const message = ref('');
     const eventDetails = ref<MeetingDetails>();
     const joined = ref(false);
 
@@ -86,7 +100,20 @@ export default defineComponent({
       });
     };
 
-    return { fetchData, joinEvent, eventDetails, joined };
+    const sendMessage = () => {
+      if (eventDetails && eventDetails.value) {
+        if( !eventDetails.value.comments ) {
+          eventDetails.value.comments = [];
+        }
+        const route = useRoute();
+        // @ts-ignore
+        MeetingService.sendMessage(route.params.id, message.value).then((response) => {
+          message.value = '';
+        });
+      }
+    };
+
+    return {fetchData, joinEvent, eventDetails, joined, message, sendMessage};
   },
 
   beforeMount() {
@@ -95,4 +122,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./DDetails.scss" />
+<style lang="scss" src="./DDetails.scss"/>

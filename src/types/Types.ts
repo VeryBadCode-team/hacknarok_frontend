@@ -47,10 +47,17 @@ export interface Meeting {
   category: MeetingCategory;
 }
 
+export interface EventMessage {
+  message: string;
+  createdAt: number;
+  user: Author;
+}
+
 export interface MeetingDetails {
   id: string;
   author: Author;
   users: Author[];
+  comments: EventMessage[];
   authorType: string;
   description: string;
   isHighlighted: boolean;
