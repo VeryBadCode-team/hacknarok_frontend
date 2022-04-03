@@ -23,14 +23,7 @@
             :icon="getIcon(marker)"
           >
             <l-popup>
-              <!-- <div class="marker-popup"> -->
-              <!-- <div class="marker-popup__title">
-                <span>{{ marker.title }}</span>
-              </div>
-              <div class="marker-popup__content">
-                <span>{{ marker.content }}</span>
-              </div> -->
-              <!-- </div> -->
+              <d-card :meeting="marker"></d-card>
             </l-popup>
           </l-marker>
         </l-map>
@@ -56,7 +49,7 @@ import {
   LMarker,
   LPopup,
   LTileLayer,
-// @ts-ignore
+  // @ts-ignore
 } from '@vue-leaflet/vue-leaflet';
 import { icon } from 'leaflet';
 import MeetingService from '@/service/meeting/meeting.service';
@@ -98,9 +91,7 @@ export default defineComponent({
     const getIcon = (meeting: Meeting) => {
       if (meeting.category) {
         return icon({
-          iconUrl: `https://hacknarok-api.verybadcode.pl/api/drive/uploads/${
-            meeting.category.imageId
-          }`,
+          iconUrl: `https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.category.imageId}`,
           iconSize: [40, 40],
         });
       }
