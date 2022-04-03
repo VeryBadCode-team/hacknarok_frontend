@@ -6,14 +6,14 @@
     <div class="dashboard__map">
       <l-map ref="map" :zoom="11" :max-zoom="map.maxZoom" :center="map.center">
         <l-tile-layer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
-        <l-control-layers />
+        <l-control-layers/>
         <l-marker
-          v-for="(marker, index) in meetings"
-          :key="'marker-' + index"
-          v-model:lat-lng="meetings[index]"
-          :icon="runningIcon"
+            v-for="(marker, index) in meetings"
+            :key="'marker-' + index"
+            v-model:lat-lng="meetings[index]"
+            :icon="getIcon(marker)"
         >
           <l-popup>
             <!-- <div class="marker-popup"> -->
@@ -31,7 +31,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onBeforeMount, ref } from 'vue';
+import {defineComponent, onBeforeMount, ref} from 'vue';
 import 'leaflet/dist/leaflet.css';
 // @ts-ignore
 // eslint-disable-next-line
@@ -42,16 +42,10 @@ import 'leaflet/dist/leaflet.css';
 //   LPopup,
 //   LControlLayers,
 // } = require('@vue-leaflet');
-import {
-  LMap,
-  LTileLayer,
-  LMarker,
-  LPopup,
-  LControlLayers,
-} from '@vue-leaflet/vue-leaflet';
-import { icon } from 'leaflet';
+import {LControlLayers, LMap, LMarker, LPopup, LTileLayer,} from '@vue-leaflet/vue-leaflet';
+import {icon} from 'leaflet';
 import MeetingService from '@/service/meeting/meeting.service';
-import { Meeting } from '@/types';
+import {Meeting} from '@/types';
 import DCard from '@/components/DCard/DCard.vue';
 
 export default defineComponent({
@@ -74,13 +68,16 @@ export default defineComponent({
       center: [50.01253, 20.99302],
     });
 
-    const runningIcon = ref(
-      icon({
-        iconUrl:
-          'https://hacknarok-api.verybadcode.pl/api/drive/uploads/c92b384c-65c0-4159-a242-55d7ff33ca61',
-        iconSize: [40, 40],
-      }),
-    );
+    const getIcon = (meeting : Meeting) => {
+      if( meeting.category ) {
+        return icon({
+          iconUrl:
+              `https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.category.imageId}`,
+          iconSize: [40, 40],
+        });
+      }
+      return '';
+    };
 
     const fetchData = () => {
       MeetingService.getAllEvents().then((response) => {
@@ -93,7 +90,7 @@ export default defineComponent({
     });
 
     return {
-      runningIcon,
+      getIcon,
       map,
       meetings,
     };
@@ -101,4 +98,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./DPanel.scss" />
+<style lang="scss" src="./DPanel.scss"/>

@@ -24,6 +24,7 @@ export interface Meeting {
   id: string;
   author: Author;
   authorType: string;
+  description: string;
   lat: number;
   lng: number;
   maxUsers: number;
@@ -32,9 +33,16 @@ export interface Meeting {
   updatedAt: number;
   eventName: string;
   imageId: string;
+  category: MeetingCategory;
 }
 
-export interface Cords {
-  lang: number;
+export interface MeetingCategory {
+  id: string;
+  name: string;
+  imageId: string;
+}
+
+export interface Coords {
+  lng: number;
   lat: number;
 }
