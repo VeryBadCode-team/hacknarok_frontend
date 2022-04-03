@@ -55,7 +55,7 @@
       </div>
       <div class="how-to-start__step-img-box">
         <img
-          src=""
+          src="@/assets/images/details.jpg"
           class="how-to-start__step-img"
           alt="iPhone app
             delivery screen"

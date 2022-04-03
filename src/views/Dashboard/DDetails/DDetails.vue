@@ -3,21 +3,19 @@
     <div class="details__head">
       <div class="details__header">
         <img
-            src="https://images.unsplash.com/photo-1622675363311-3e1904dc1885?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-            alt="header"
+          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${eventDetails?.backgroundId}`"
+          alt="header"
         />
       </div>
       <div v-if="!joined" class="details__join">
-        <n-h1>{{
-            eventDetails?.eventName ?? eventDetails?.category.name
-          }}
+        <n-h1
+          >{{ eventDetails?.eventName ?? eventDetails?.category.name }}
         </n-h1>
         <n-button type="primary" @click="joinEvent"> Dołącz teraz</n-button>
       </div>
       <div v-if="joined" class="details__leave">
-        <n-h1>{{
-            eventDetails?.eventName ?? eventDetails?.category.name
-          }}
+        <n-h1
+          >{{ eventDetails?.eventName ?? eventDetails?.category.name }}
         </n-h1>
         <n-button type="primary"> Zrezygnuj z wypadu</n-button>
       </div>
@@ -29,8 +27,8 @@
           <n-p>Organizator</n-p>
           <div class="organizator">
             <n-avatar
-                size="large"
-                :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${eventDetails?.author.avatarId}`"
+              size="large"
+              :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${eventDetails?.author.avatarId}`"
             />
             <div>
               <p>
@@ -46,33 +44,38 @@
           <n-p>Gdzie</n-p>
           Tarnów
         </div>
-        <div class="details__more-box">
+        <div v-if="eventDetails?.createdAt" class="details__more-box">
           <n-p>Kiedy</n-p>
           {{ new Date(eventDetails?.createdAt).toLocaleDateString('pl-PL') }}
         </div>
       </div>
     </div>
     <div class="chat">
+      <n-p> Skontaktuj się z organizatorem </n-p>
       <div class="chat__input">
-        <input v-model="message" type="text" placeholder="Napisz wiadomość"/>
-        <button @click="sendMessage">Wyślij</button>
+        <div>
+          <input v-model="message" type="text" placeholder="Napisz wiadomość" />
+          <n-button @click="sendMessage" type="primary">Wyślij</n-button>
+        </div>
       </div>
       <div class="chat__list">
-        <div v-if="eventDetails?.comments != null" v-for="(message, index) in eventDetails?.comments">
+        <div
+          v-if="eventDetails?.comments != null"
+          v-for="(message, index) in eventDetails?.comments"
+        >
           {{ message }}
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
-import {NAvatar, NButton, NH1, NP} from 'naive-ui';
+import { defineComponent, ref } from 'vue';
+import { NAvatar, NButton, NH1, NP } from 'naive-ui';
 import MeetingService from '@/service/meeting/meeting.service';
-import {MeetingDetails} from '@/types';
-import {useRoute} from 'vue-router';
+import { MeetingDetails } from '@/types';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   components: {
@@ -86,11 +89,13 @@ export default defineComponent({
     const eventDetails = ref<MeetingDetails>();
     const joined = ref(false);
 
-    const fetchData = () => {
+    const fetchData = async () => {
       // @ts-ignore
-      MeetingService.getEventDetails(useRoute().params.id).then((response) => {
-        eventDetails.value = response.data;
-      });
+      await MeetingService.getEventDetails(useRoute().params.id).then(
+        (response) => {
+          eventDetails.value = response.data;
+        },
+      );
     };
 
     const joinEvent = () => {
@@ -102,18 +107,20 @@ export default defineComponent({
 
     const sendMessage = () => {
       if (eventDetails && eventDetails.value) {
-        if( !eventDetails.value.comments ) {
+        if (!eventDetails.value.comments) {
           eventDetails.value.comments = [];
         }
         const route = useRoute();
         // @ts-ignore
-        MeetingService.sendMessage(route.params.id, message.value).then((response) => {
-          message.value = '';
-        });
+        MeetingService.sendMessage(route.params.id, message.value).then(
+          (response) => {
+            message.value = '';
+          },
+        );
       }
     };
 
-    return {fetchData, joinEvent, eventDetails, joined, message, sendMessage};
+    return { fetchData, joinEvent, eventDetails, joined, message, sendMessage };
   },
 
   beforeMount() {
@@ -122,4 +129,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./DDetails.scss"/>
+<style lang="scss" src="./DDetails.scss" />

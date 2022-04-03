@@ -70,7 +70,8 @@ import {
 } from 'naive-ui';
 import Dialog from 'primevue/dialog';
 import MeetingService from '@/service/meeting/meeting.service';
-import { Coords, CreateMeetingRequest } from '@/types';
+import { Coords, CreateMeetingRequest, MeetingCategory } from '@/types';
+import { kebabCase } from 'lodash';
 
 export default defineComponent({
   components: {
@@ -91,8 +92,12 @@ export default defineComponent({
     const name = ref(`${currentUser.firstName} ${currentUser.lastName}`);
     const description = ref('');
     const maxUsers = ref(1);
-    const categories = ref([]);
-    const selectedOption = ref('Wybierz jedną');
+    const categories = ref<MeetingCategory[]>([]);
+    const selectedOption = ref<MeetingCategory>({
+      id: '1',
+      name: 'Wybiesz jedną',
+      imageId: 'string',
+    });
 
     const filter = ref('');
     const isModalOpen = ref(false);
@@ -113,7 +118,7 @@ export default defineComponent({
     };
 
     const createMeeting = () => {
-      console.log(selectedOption.value);
+      console.log('siema: ', selectedOption.value);
       const createUserRequest: CreateMeetingRequest = {
         name: name.value,
         categoryId: selectedOption.value.id,
@@ -123,8 +128,6 @@ export default defineComponent({
         lat: coords.value.lat,
         lng: coords.value.lng,
       };
-
-      console.log(createUserRequest);
 
       MeetingService.createMeeting(createUserRequest).then((response) => {
         console.log(`created meeting - ${response.data}`);
