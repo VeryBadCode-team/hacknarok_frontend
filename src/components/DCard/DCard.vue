@@ -3,32 +3,27 @@
     <div class="card__header">
       <div class="card__profile">
         <n-avatar
-            size="large"
-            :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.author.avatarId}`"
+          size="large"
+          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${
+            meeting.imageId ?? meeting.author.avatarId
+          }`"
         />
         <n-p class="card__name">{{ meeting.author.firstName }}</n-p>
         <div class="card__stars">
-          <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star"/>
+          <div class="card__icon" v-for="star in stars">
+            <img src="@/assets/images/icons/star.svg" alt="star" />
           </div>
-          <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star"/>
-          </div>
-          <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star"/>
-          </div>
-          <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star"/>
-          </div>
-          <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star"/>
+          <div class="card__icon" v-for="star in emptyStars">
+            <img src="@/assets/images/icons/star_outline.svg" alt="star" />
           </div>
         </div>
-        <div class="card__distance">{{ getDistance() }} kilometry od Ciebie</div>
+        <div class="card__distance">
+          {{ getDistance() }} kilometry od Ciebie
+        </div>
       </div>
       <div class="card__highlighted">
         <div class="card__icon">
-          <img src="@/assets/images/icons/star.svg" alt="star"/>
+          <img src="@/assets/images/icons/star.svg" alt="star" />
         </div>
         <n-p class="card__text">Wyróżnione</n-p>
       </div>
@@ -37,10 +32,10 @@
       <div class="card__headline">
         <n-h3>{{ meeting.eventName ?? meeting.category?.name ?? '---' }}</n-h3>
         <div class="pin">
-          <img :src="getImageSrc()" class="card__badge" alt="running"/>
+          <img :src="getImageSrc()" class="card__badge" alt="running" />
         </div>
       </div>
-      <n-p class="card__description">{{meeting.description}}</n-p>
+      <n-p class="card__description">{{ meeting.description }}</n-p>
     </div>
     <div class="card__footer">
       <div class="people-counter">
@@ -53,7 +48,9 @@
           >{{ meeting.maxUsers - meeting.userLeft }}/{{ meeting.maxUsers }}</n-p
         >
       </div>
-      <n-button type="primary">Dołącz</n-button>
+      <router-link to="/dashboard/details">
+        <n-button type="primary">Dołącz</n-button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -81,6 +78,12 @@ export default defineComponent({
       lng: 0,
       lat: 0,
     });
+
+    const MAX_STARS = 5;
+
+    const stars = ref(props.meeting.author.rate);
+
+    const emptyStars = ref(MAX_STARS - stars.value);
 
     const getImageSrc = () => {
       return `https://hacknarok-api.verybadcode.pl/api/drive/uploads/${props.meeting.category?.imageId}`;
@@ -120,7 +123,7 @@ export default defineComponent({
 
     onBeforeMount(() => getLocation());
 
-    return { coords, getDistance, getImageSrc };
+    return { coords, getDistance, getImageSrc, stars, emptyStars };
   },
 });
 </script>

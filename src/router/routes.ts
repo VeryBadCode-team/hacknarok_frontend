@@ -6,6 +6,7 @@ const VSuccess = () => import('@/components/VSuccess.vue');
 
 const DMain = () => import('@/views/Dashboard/Main/DMain.vue');
 const DPanel = () => import('@/views/Dashboard/Panel/DPanel.vue');
+const DDetails = () => import('@/views/Dashboard/DDetails/DDetails.vue');
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       { path: '/dashboard', component: DPanel, meta: { requiresAuth: true } },
+      {
+        path: '/dashboard/details',
+        component: DDetails,
+        meta: { requiresAuth: true },
+      },
     ],
   },
   { path: '/authenticated', component: VSuccess, meta: { requiresAuth: true } },

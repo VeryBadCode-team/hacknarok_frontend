@@ -25,6 +25,7 @@ export interface Meeting {
   author: Author;
   authorType: string;
   description: string;
+  isHighlighted: boolean;
   lat: number;
   lng: number;
   maxUsers: number;
@@ -35,6 +36,25 @@ export interface Meeting {
   imageId: string;
   category: MeetingCategory;
 }
+
+export interface MeetingDetails {
+  id: string;
+  author: Author;
+  users: Author[];
+  authorType: string;
+  description: string;
+  isHighlighted: boolean;
+  lat: number;
+  lng: number;
+  maxUsers: number;
+  userLeft: number;
+  createdAt: number;
+  updatedAt: number;
+  eventName: string;
+  imageId: string;
+  category: MeetingCategory;
+}
+
 
 export interface MeetingCategory {
   id: string;
