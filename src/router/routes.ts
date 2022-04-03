@@ -1,7 +1,7 @@
 const HomeView = () => import('@/views/Home/HomeView.vue');
 const SignIn = () => import('@/views/SignIn/SignIn.vue');
 const SignUp = () => import('@/views/SignUp/SignUp.vue');
-const Wrapper = () => import('@/views/Wrapper/Wrapper.vue');
+const HomeWrapper = () => import('@/views/HomeWrapper/HomeWrapper.vue');
 const VSuccess = () => import('@/components/VSuccess.vue');
 
 const DMain = () => import('@/views/Dashboard/Main/DMain.vue');
@@ -15,7 +15,7 @@ const routes = [
     children: [
       { path: 'signup', component: SignUp, meta: { guest: true } },
       { path: 'login', component: SignIn, meta: { guest: true } },
-      { path: '/', component: Wrapper, meta: { guest: true } },
+      { path: '/', component: HomeWrapper, meta: { guest: true } },
     ],
   },
   {

@@ -7,9 +7,9 @@
       </div>
     </router-link>
     <nav class="header__nav">
-      <n-p>O nas</n-p>
-      <n-p>Jak zacząć</n-p>
-      <n-p>Kontakt</n-p>
+      <n-p><a href="#about-us"> O nas </a> </n-p>
+      <n-p> <a href="#"> Jak zacząć </a></n-p>
+      <n-p> <a href="#contact"> Kontakt </a></n-p>
       <n-button
         type="primary"
         :class="{ header__button: !isPrimary }"
