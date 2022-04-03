@@ -1,26 +1,28 @@
 <template>
   <div class="dashboard">
-    <d-filter></d-filter>
+    <d-filter>
+
+    </d-filter>
     <div class="dashboard__wrapper">
       <div class="dashboard__cards">
         <d-card v-for="meeting in meetings" :meeting="meeting"></d-card>
       </div>
       <div class="dashboard__map">
         <l-map
-          ref="map"
-          :zoom="11"
-          :max-zoom="map.maxZoom"
-          :center="map.center"
+            ref="map"
+            :zoom="11"
+            :max-zoom="map.maxZoom"
+            :center="map.center"
         >
           <l-tile-layer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           ></l-tile-layer>
-          <l-control-layers />
+          <l-control-layers/>
           <l-marker
-            v-for="(marker, index) in meetings"
-            :key="'marker-' + index"
-            v-model:lat-lng="meetings[index]"
-            :icon="getIcon(marker)"
+              v-for="(marker, index) in meetings"
+              :key="'marker-' + index"
+              v-model:lat-lng="meetings[index]"
+              :icon="getIcon(marker)"
           >
             <l-popup>
               <!-- <div class="marker-popup"> -->
@@ -39,7 +41,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onBeforeMount, ref } from 'vue';
+import {defineComponent, onBeforeMount, ref} from 'vue';
 import 'leaflet/dist/leaflet.css';
 // @ts-ignore
 // eslint-disable-next-line
@@ -50,18 +52,13 @@ import 'leaflet/dist/leaflet.css';
 //   LPopup,
 //   LControlLayers,
 // } = require('@vue-leaflet');
-import {
-  LControlLayers,
-  LMap,
-  LMarker,
-  LPopup,
-  LTileLayer,
-} from '@vue-leaflet/vue-leaflet';
-import { icon } from 'leaflet';
+import {LControlLayers, LMap, LMarker, LPopup, LTileLayer,} from '@vue-leaflet/vue-leaflet';
+import {icon} from 'leaflet';
 import MeetingService from '@/service/meeting/meeting.service';
-import { Meeting } from '@/types';
+import {Meeting} from '@/types';
 import DCard from '@/components/DCard/DCard.vue';
 import DFilter from '@/components/DFilter/DFilter.vue';
+import {NButton, NCheckbox, NForm, NFormItem, NH1, NH2, NInput, NP} from "naive-ui";
 
 export default defineComponent({
   name: 'DPanel',
@@ -113,4 +110,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" src="./DPanel.scss" />
+<style lang="scss" src="./DPanel.scss"/>

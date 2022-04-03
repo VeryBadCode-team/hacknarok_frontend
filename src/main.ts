@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css';
 
 import 'primevue/resources/themes/md-light-indigo/theme.css';
 import 'primevue/resources/primevue.min.css';
-import 'primeicons/primeicons.css';
+// import 'primeicons/primeicons.css';
 
 const app = createApp(App);
 
