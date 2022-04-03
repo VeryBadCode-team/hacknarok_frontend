@@ -8,7 +8,7 @@
     </router-link>
     <nav class="header__nav">
       <n-p><a href="#about-us"> O nas </a> </n-p>
-      <n-p> <a href="#"> Jak zacząć </a></n-p>
+      <n-p> <a href="#how-to-start"> Jak zacząć </a></n-p>
       <n-p> <a href="#contact"> Kontakt </a></n-p>
       <n-button
         type="primary"
