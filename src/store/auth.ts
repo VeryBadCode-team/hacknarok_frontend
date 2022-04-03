@@ -68,7 +68,7 @@ export const useAuth = defineStore('auth', {
     async update(payload: UserPayload): Promise<void> {
       try {
         await AuthService.update(payload);
-        toastNotification(ToastType.SUCCESS, 'User updated succesfully.');
+        toastNotification(ToastType.SUCCESS, 'Avatar updated succesfully.');
       } catch (err) {
         toastNotification(ToastType.ERROR, 'User cannot be updated');
       }

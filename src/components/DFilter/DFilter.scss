@@ -1,0 +1,22 @@
+.filter {
+  padding: 2rem 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__input-wrapper {
+    background-color: #efefef;
+    border-radius: 5rem;
+    padding: 1rem 2rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__input {
+    background: none;
+    border: none;
+    outline: none;
+  }
+}

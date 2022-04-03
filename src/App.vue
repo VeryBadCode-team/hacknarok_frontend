@@ -62,6 +62,16 @@ export default defineComponent({
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 5px solid var(--color-primary);
+  }
 }
 
 // Global styles
@@ -115,6 +125,5 @@ a {
 .secondary-heading {
   font-size: 2.8rem;
   margin-bottom: 2.4rem;
-
 }
 </style>
