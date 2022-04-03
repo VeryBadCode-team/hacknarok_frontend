@@ -1,4 +1,5 @@
 import instance from '../axios-config';
+import {CreateMeetingRequest, Meeting} from "@/types";
 
 class MeetingService {
   getAllEvents() {
@@ -11,6 +12,10 @@ class MeetingService {
 
   getMeetingCategories() {
     return instance.get('api/joinme/categories');
+  }
+
+  createMeeting(payload:CreateMeetingRequest) {
+    return instance.put('api/joinme/events', payload);
   }
 }
 

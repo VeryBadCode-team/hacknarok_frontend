@@ -20,6 +20,16 @@ interface Author {
   rate: number;
 }
 
+export interface CreateMeetingRequest {
+  name: string,
+  categoryId: string,
+  description: string,
+  maxUsers: number,
+  type: string,
+  lat: number|undefined,
+  lng: number|undefined,
+}
+
 export interface Meeting {
   id: string;
   author: Author;
