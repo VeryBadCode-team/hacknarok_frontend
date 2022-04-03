@@ -3,34 +3,32 @@
     <div class="card__header">
       <div class="card__profile">
         <n-avatar
-          size="large"
-          :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.author.avatarId}`"
+            size="large"
+            :src="`https://hacknarok-api.verybadcode.pl/api/drive/uploads/${meeting.author.avatarId}`"
         />
         <n-p class="card__name">{{ meeting.author.firstName }}</n-p>
         <div class="card__stars">
           <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star" />
+            <img src="@/assets/images/icons/star.svg" alt="star"/>
           </div>
           <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star" />
+            <img src="@/assets/images/icons/star.svg" alt="star"/>
           </div>
           <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star" />
+            <img src="@/assets/images/icons/star.svg" alt="star"/>
           </div>
           <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star" />
+            <img src="@/assets/images/icons/star.svg" alt="star"/>
           </div>
           <div class="card__icon">
-            <img src="@/assets/images/icons/star.svg" alt="star" />
+            <img src="@/assets/images/icons/star.svg" alt="star"/>
           </div>
         </div>
-        <div class="card__distance">
-          {{ getDistance() }} kilometry od Ciebie
-        </div>
+        <div class="card__distance">{{ getDistance() }} kilometry od Ciebie</div>
       </div>
       <div class="card__highlighted">
         <div class="card__icon">
-          <img src="@/assets/images/icons/star.svg" alt="star" />
+          <img src="@/assets/images/icons/star.svg" alt="star"/>
         </div>
         <n-p class="card__text">Wyróżnione</n-p>
       </div>
@@ -39,12 +37,10 @@
       <div class="card__headline">
         <n-h3>{{ meeting.eventName }}</n-h3>
         <div class="pin">
-          <img :src="getImageSrc()" alt="running" />
+          <img :src="getImageSrc()" class="card__badge" alt="running"/>
         </div>
       </div>
-      <n-p>
-        {{ meeting.description.replace(/(.{140})..+/, '$1 …') }}
-      </n-p>
+      <n-p class="card__description">{{meeting.description}}</n-p>
     </div>
     <div class="card__footer">
       <div class="people-counter">
