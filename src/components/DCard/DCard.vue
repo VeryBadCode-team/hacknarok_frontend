@@ -49,7 +49,7 @@
         >
       </div>
       <router-link to="/dashboard/details">
-        <n-button type="primary">Dołącz</n-button>
+        <n-button type="primary" @click="setDetails">Dołącz</n-button>
       </router-link>
     </div>
   </div>
@@ -76,9 +76,6 @@ export default defineComponent({
   },
   setup(props) {
     const meeting = useMeeting();
-    console.log('seima');
-
-    meeting.saveMeeting(props.meeting);
 
     const coords = ref<Coords>({
       lng: 0,
@@ -127,9 +124,13 @@ export default defineComponent({
       return null;
     };
 
+    const setDetails = () => {
+      meeting.saveMeeting(props.meeting);
+    };
+
     onBeforeMount(() => getLocation());
 
-    return { coords, getDistance, getImageSrc, stars, emptyStars };
+    return { coords, getDistance, getImageSrc, stars, emptyStars, setDetails };
   },
 });
 </script>

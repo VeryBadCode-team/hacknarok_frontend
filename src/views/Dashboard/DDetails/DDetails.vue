@@ -63,11 +63,15 @@ export default defineComponent({
     const meeting = useMeeting();
     const eventDetails = ref<MeetingDetails>();
 
-    const fetchData = () => {
-      MeetingService.getEventDetails(meeting.meeting.id).then((response) => {
-        console.log(response.data);
-        eventDetails.value = response.data;
-      });
+    console.log(eventDetails.value);
+
+    const fetchData = async () => {
+      await MeetingService.getEventDetails(meeting.meeting.id).then(
+        (response) => {
+          console.log(response.data);
+          eventDetails.value = response.data;
+        },
+      );
     };
 
     const joinEvent = () => {};

@@ -23,21 +23,48 @@
 
 .invite {
   display: flex;
-  min-width: 80rem;
+  min-width: 40rem;
   padding: 0 2rem;
   gap: 1rem;
-  flex-direction: row;
+  flex-direction: column;
 
-  &__left, &__right {
+  div {
     display: flex;
     flex-direction: column;
+  }
+
+  label {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .text {
+    font-size: 1.4rem;
+    display: flex;
+    text-align: center;
     gap: 1rem;
+    span {
+      color: var(--color-primary);
+      cursor: pointer;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    border-radius: 5px;
+  }
+
+  textarea {
+    padding: 1rem;
+    resize: none;
+    border: 1px solid rgb(209, 209, 209);
   }
 
   input {
     border-radius: 5px;
     border: 1px solid rgb(209, 209, 209);
-    padding: 1rem 2rem;
+    padding: 1rem;
 
     background: none;
     outline: none;
