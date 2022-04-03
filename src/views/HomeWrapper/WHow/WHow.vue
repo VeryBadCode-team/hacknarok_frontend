@@ -17,7 +17,7 @@
         <img
           src="@/assets/images/dashboard.jpg"
           class="how-to-start__step-img"
-          alt="main dashboard screen"
+          alt="main dashboard"
         />
       </div>
 
